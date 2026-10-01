@@ -228,7 +228,7 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
             title={`Send email to ${siteConfig.brand.email}`}
           >
             <Mail size={15} color="var(--color-orange-500)" style={{ flexShrink: 0 }} />
-            <span style={{ maxWidth: '170px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <span style={{ whiteSpace: 'nowrap', fontWeight: 600 }}>
               {siteConfig.brand.email}
             </span>
           </a>
@@ -403,23 +403,26 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
         .desktop-email-pill {
           display: none;
           align-items: center;
-          gap: 7px;
-          font-size: 0.82rem;
+          gap: 8px;
+          font-size: 0.84rem;
           font-weight: 600;
           color: var(--color-navy-900);
-          padding: 0 12px;
+          padding: 0 14px;
           height: 38px;
           border-radius: var(--radius-md);
           background: var(--color-bg-subtle);
           border: 1px solid var(--color-border-light);
           text-decoration: none;
+          white-space: nowrap;
           transition: all 180ms ease;
+          flex-shrink: 0;
         }
 
         .desktop-email-pill:hover {
           border-color: var(--color-orange-500);
           color: var(--color-orange-600);
           background: #FFFFFF;
+          box-shadow: 0 2px 8px rgba(234, 88, 12, 0.15);
         }
 
         .mobile-menu-btn {
@@ -453,17 +456,17 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           }
         }
 
-        @media (min-width: 1280px) {
+        @media (min-width: 1240px) {
           .desktop-email-pill {
             display: inline-flex !important;
           }
           .nav-box-pill {
-            padding: 0 13px;
-            font-size: 0.88rem;
+            padding: 0 12px;
+            font-size: 0.86rem;
           }
           .desktop-nav-box {
-            gap: 4px;
-            padding: 5px 8px;
+            gap: 3px;
+            padding: 4px 6px;
           }
         }
 
