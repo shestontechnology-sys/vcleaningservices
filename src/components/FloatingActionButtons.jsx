@@ -24,8 +24,8 @@ export const FloatingActionButtons = ({ onOpenBooking, onOpenQuote }) => {
           style={{
             padding: '14px 22px',
             borderRadius: 'var(--radius-full)',
-            boxShadow: '0 8px 24px rgba(11, 37, 69, 0.35)',
-            border: '2px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 8px 24px rgba(234, 88, 12, 0.4)',
+            border: '2px solid rgba(255, 255, 255, 0.4)',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
@@ -53,7 +53,7 @@ export const FloatingActionButtons = ({ onOpenBooking, onOpenQuote }) => {
         alignItems: 'center',
         gap: '10px',
         zIndex: 885,
-        boxShadow: '0 -4px 16px rgba(0, 0, 0, 0.08)'
+        boxShadow: '0 -4px 16px rgba(124, 45, 18, 0.1)'
       }} className="mobile-bottom-bar">
 
         <button
@@ -61,7 +61,7 @@ export const FloatingActionButtons = ({ onOpenBooking, onOpenQuote }) => {
           className="btn btn-secondary btn-sm"
           style={{ flex: 1, padding: '12px 8px', fontSize: '0.9rem', fontWeight: 700 }}
         >
-          <Calculator size={16} />
+          <Calculator size={16} color="var(--color-orange-600)" />
           <span>GET QUOTE</span>
         </button>
 

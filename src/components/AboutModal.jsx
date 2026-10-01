@@ -36,7 +36,7 @@ export const AboutModal = ({ onClose, onOpenBooking }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--color-navy-800)',
+            color: 'var(--color-navy-900)',
             cursor: 'pointer'
           }}
         >
@@ -44,12 +44,12 @@ export const AboutModal = ({ onClose, onOpenBooking }) => {
         </button>
 
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="section-badge blue" style={{ margin: 0 }}>
-            <Sparkles size={14} /> ABOUT V CLEANING SERVICES
+          <span className="section-badge" style={{ margin: 0 }}>
+            <Sparkles size={14} color="var(--color-orange-600)" /> ABOUT V CLEANING SERVICES
           </span>
         </div>
 
-        <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--color-navy-800)', marginBottom: '14px', letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--color-navy-900)', marginBottom: '14px', letterSpacing: '-0.02em' }}>
           Cleaner Spaces | Healthier Lives
         </h2>
 
@@ -61,9 +61,9 @@ export const AboutModal = ({ onClose, onOpenBooking }) => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginBottom: '32px' }}>
           
           {/* Who We Are */}
-          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-border-light)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-royal-600)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
-              <Users size={20} />
+          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-orange-100)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-orange-700)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
+              <Users size={20} color="var(--color-orange-600)" />
               <span>Who We Are</span>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
@@ -72,9 +72,9 @@ export const AboutModal = ({ onClose, onOpenBooking }) => {
           </div>
 
           {/* Our Experience */}
-          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-border-light)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-green-600)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
-              <Award size={20} />
+          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-orange-100)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-orange-700)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
+              <Award size={20} color="var(--color-orange-600)" />
               <span>Our Experience</span>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
@@ -83,9 +83,9 @@ export const AboutModal = ({ onClose, onOpenBooking }) => {
           </div>
 
           {/* Our Team */}
-          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-border-light)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-royal-600)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
-              <ShieldCheck size={20} />
+          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-orange-100)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-orange-700)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
+              <ShieldCheck size={20} color="var(--color-orange-600)" />
               <span>Our Team</span>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
@@ -94,9 +94,9 @@ export const AboutModal = ({ onClose, onOpenBooking }) => {
           </div>
 
           {/* Our Mission */}
-          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-border-light)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-green-600)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
-              <Target size={20} />
+          <div style={{ background: 'var(--color-bg-subtle)', padding: '22px', borderRadius: '16px', border: '1px solid var(--color-orange-100)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--color-orange-700)', fontWeight: 800, fontSize: '1.1rem', marginBottom: '8px' }}>
+              <Target size={20} color="var(--color-orange-600)" />
               <span>Our Mission</span>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>

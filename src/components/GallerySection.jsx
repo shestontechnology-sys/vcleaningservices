@@ -19,8 +19,8 @@ export const GallerySection = () => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             PORTFOLIO SHOWCASE
           </span>
           <h2 className="section-title">
@@ -49,11 +49,12 @@ export const GallerySection = () => {
                   padding: '9px 18px',
                   borderRadius: 'var(--radius-full)',
                   fontSize: '0.88rem',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: 'pointer',
-                  border: isActive ? '1.5px solid var(--color-royal-600)' : '1px solid var(--color-border-light)',
-                  background: isActive ? 'var(--color-navy-800)' : '#FFFFFF',
-                  color: isActive ? '#FFFFFF' : 'var(--color-navy-800)',
+                  border: isActive ? '1.5px solid var(--color-orange-600)' : '1px solid var(--color-border-light)',
+                  background: isActive ? 'linear-gradient(135deg, #EA580C 0%, #F97316 100%)' : '#FFFFFF',
+                  color: isActive ? '#FFFFFF' : 'var(--color-navy-900)',
+                  boxShadow: isActive ? '0 4px 12px rgba(234, 88, 12, 0.25)' : 'none',
                   transition: 'all var(--transition-fast)'
                 }}
               >
@@ -101,7 +102,7 @@ export const GallerySection = () => {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to top, rgba(7, 23, 44, 0.88) 0%, rgba(7, 23, 44, 0.2) 60%, transparent 100%)',
+                background: 'linear-gradient(to top, rgba(28, 25, 23, 0.9) 0%, rgba(28, 25, 23, 0.2) 60%, transparent 100%)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-end',
@@ -111,7 +112,7 @@ export const GallerySection = () => {
                 <div style={{
                   fontSize: '0.75rem',
                   fontWeight: 700,
-                  color: 'var(--color-cyan-400)',
+                  color: 'var(--color-orange-400)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
                   marginBottom: '4px'
@@ -121,7 +122,7 @@ export const GallerySection = () => {
                 <div style={{ fontSize: '1.1rem', fontWeight: 800, lineHeight: 1.3 }}>
                   {item.title}
                 </div>
-                <div style={{ fontSize: '0.82rem', color: '#CBD5E1', marginTop: '4px' }}>
+                <div style={{ fontSize: '0.82rem', color: '#E7D7C8', marginTop: '4px' }}>
                   {item.description}
                 </div>
               </div>
@@ -134,12 +135,13 @@ export const GallerySection = () => {
                 width: '36px',
                 height: '36px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.85)',
+                background: 'rgba(255, 255, 255, 0.9)',
                 backdropFilter: 'blur(6px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--color-navy-800)'
+                color: 'var(--color-orange-600)',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
               }}>
                 <ZoomIn size={16} />
               </div>
@@ -153,7 +155,7 @@ export const GallerySection = () => {
             <div 
               className="modal-content" 
               onClick={(e) => e.stopPropagation()}
-              style={{ maxWidth: '880px', padding: 0, overflow: 'hidden', background: '#0B2545' }}
+              style={{ maxWidth: '880px', padding: 0, overflow: 'hidden', background: '#1C1917' }}
             >
               <button
                 onClick={() => setLightboxImage(null)}
@@ -185,13 +187,13 @@ export const GallerySection = () => {
               />
 
               <div style={{ padding: '24px', color: '#FFFFFF' }}>
-                <span style={{ fontSize: '0.82rem', color: 'var(--color-cyan-400)', fontWeight: 700, textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '0.82rem', color: 'var(--color-orange-400)', fontWeight: 700, textTransform: 'uppercase' }}>
                   {lightboxImage.category}
                 </span>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FFFFFF', marginTop: '4px' }}>
                   {lightboxImage.title}
                 </h3>
-                <p style={{ fontSize: '0.94rem', color: '#CBD5E1', marginTop: '6px' }}>
+                <p style={{ fontSize: '0.94rem', color: '#E7D7C8', marginTop: '6px' }}>
                   {lightboxImage.description}
                 </p>
               </div>

@@ -22,8 +22,8 @@ export const BeforeAfterSection = () => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             REAL RESULTS
           </span>
           <h2 className="section-title">
@@ -53,12 +53,12 @@ export const BeforeAfterSection = () => {
                   borderRadius: 'var(--radius-full)',
                   fontSize: '0.92rem',
                   fontWeight: 700,
-                  border: isActive ? '2px solid var(--color-royal-600)' : '1px solid var(--color-border-light)',
-                  background: isActive ? 'var(--color-navy-800)' : '#FFFFFF',
-                  color: isActive ? '#FFFFFF' : 'var(--color-navy-800)',
+                  border: isActive ? '2px solid var(--color-orange-600)' : '1px solid var(--color-border-light)',
+                  background: isActive ? 'linear-gradient(135deg, #EA580C 0%, #F97316 100%)' : '#FFFFFF',
+                  color: isActive ? '#FFFFFF' : 'var(--color-navy-900)',
                   cursor: 'pointer',
                   transition: 'all var(--transition-fast)',
-                  boxShadow: isActive ? 'var(--shadow-md)' : 'none'
+                  boxShadow: isActive ? '0 4px 14px rgba(234, 88, 12, 0.3)' : 'none'
                 }}
               >
                 {item.category}
@@ -79,10 +79,10 @@ export const BeforeAfterSection = () => {
         }}>
           
           <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy-900)' }}>
               {currentCase.title}
             </h3>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.84rem', color: 'var(--color-cyan-500)', fontWeight: 600 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.84rem', color: 'var(--color-orange-600)', fontWeight: 600 }}>
               <MoveHorizontal size={16} /> Drag slider left or right
             </div>
           </div>
@@ -95,7 +95,7 @@ export const BeforeAfterSection = () => {
             borderRadius: '16px',
             overflow: 'hidden',
             userSelect: 'none',
-            background: '#0B2545'
+            background: '#1C1917'
           }}>
             {/* After Image (Full background) */}
             <img
@@ -115,7 +115,7 @@ export const BeforeAfterSection = () => {
               position: 'absolute',
               top: '16px',
               right: '16px',
-              background: 'rgba(16, 185, 129, 0.9)',
+              background: 'linear-gradient(135deg, #EA580C 0%, #F97316 100%)',
               color: '#FFFFFF',
               fontWeight: 800,
               fontSize: '0.82rem',
@@ -123,7 +123,8 @@ export const BeforeAfterSection = () => {
               borderRadius: 'var(--radius-full)',
               backdropFilter: 'blur(4px)',
               letterSpacing: '0.04em',
-              zIndex: 3
+              zIndex: 3,
+              boxShadow: '0 2px 8px rgba(234, 88, 12, 0.4)'
             }}>
               AFTER (Sparkling Clean)
             </div>
@@ -136,7 +137,7 @@ export const BeforeAfterSection = () => {
               bottom: 0,
               width: `${currentSliderPos}%`,
               overflow: 'hidden',
-              filter: 'grayscale(25%) contrast(90%) brightness(85%)' // authentic before look
+              filter: 'grayscale(25%) contrast(90%) brightness(85%)'
             }}>
               <img
                 src={currentCase.beforeImage}
@@ -153,7 +154,7 @@ export const BeforeAfterSection = () => {
                 position: 'absolute',
                 top: '16px',
                 left: '16px',
-                background: 'rgba(11, 37, 69, 0.88)',
+                background: 'rgba(28, 25, 23, 0.9)',
                 color: '#FFFFFF',
                 fontWeight: 800,
                 fontSize: '0.82rem',
@@ -187,18 +188,18 @@ export const BeforeAfterSection = () => {
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: '#FFFFFF',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                background: '#EA580C',
+                boxShadow: '0 4px 14px rgba(234, 88, 12, 0.5)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--color-navy-800)'
+                color: '#FFFFFF'
               }}>
                 <MoveHorizontal size={20} />
               </div>
             </div>
 
-            {/* Invisible Range Input Slider for touch and mouse interaction */}
+            {/* Invisible Range Input Slider */}
             <input
               type="range"
               min="0"
@@ -227,10 +228,11 @@ export const BeforeAfterSection = () => {
             borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
-            gap: '10px'
+            gap: '10px',
+            border: '1px solid var(--color-orange-100)'
           }}>
-            <CheckCircle2 size={18} color="var(--color-green-500)" style={{ flexShrink: 0 }} />
-            <p style={{ fontSize: '0.9rem', color: 'var(--color-navy-800)', margin: 0, fontWeight: 500 }}>
+            <CheckCircle2 size={18} color="var(--color-orange-500)" style={{ flexShrink: 0 }} />
+            <p style={{ fontSize: '0.9rem', color: 'var(--color-navy-900)', margin: 0, fontWeight: 500 }}>
               {currentCase.description}
             </p>
           </div>

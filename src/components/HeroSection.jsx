@@ -43,7 +43,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
       position: 'relative',
       paddingTop: '60px',
       paddingBottom: '70px',
-      background: 'linear-gradient(180deg, #FFFFFF 0%, #F4F8FC 60%, #EBF4FC 100%)',
+      background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF7ED 50%, #FFEDD5 100%)',
       overflow: 'hidden'
     }}>
       {/* Background Decorative Radial Blobs */}
@@ -51,10 +51,10 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
         position: 'absolute',
         top: '-10%',
         left: '-5%',
-        width: '500px',
-        height: '500px',
+        width: '520px',
+        height: '520px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(0, 166, 251, 0.08) 0%, rgba(255, 255, 255, 0) 70%)',
+        background: 'radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(255, 255, 255, 0) 70%)',
         pointerEvents: 'none'
       }} />
       <div style={{
@@ -64,7 +64,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
         width: '550px',
         height: '550px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(255, 255, 255, 0) 70%)',
+        background: 'radial-gradient(circle, rgba(234, 88, 12, 0.1) 0%, rgba(255, 255, 255, 0) 70%)',
         pointerEvents: 'none'
       }} />
 
@@ -81,23 +81,23 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
             
             {/* Top Brand Pill */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-              <span className="section-badge blue" style={{ margin: 0 }}>
-                <Sparkles size={14} color="var(--color-cyan-500)" />
+              <span className="section-badge" style={{ margin: 0, background: 'var(--color-orange-100)', color: 'var(--color-orange-700)', borderColor: 'var(--color-orange-200)' }}>
+                <Sparkles size={14} color="var(--color-orange-600)" />
                 V CLEANING SERVICES
               </span>
               <span style={{ 
                 fontSize: '0.82rem', 
-                color: 'var(--color-green-600)', 
+                color: 'var(--color-orange-800)', 
                 fontWeight: 700,
-                background: 'var(--color-green-50)',
+                background: '#FFF7ED',
                 padding: '4px 10px',
                 borderRadius: 'var(--radius-full)',
-                border: '1px solid var(--color-green-100)',
+                border: '1px solid var(--color-orange-200)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '5px'
               }}>
-                <ShieldCheck size={13} /> Multi-Platform Trained
+                <ShieldCheck size={13} color="var(--color-orange-600)" /> Multi-Platform Trained
               </span>
             </div>
 
@@ -139,11 +139,11 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'var(--color-cyan-100)',
+                  background: 'var(--color-orange-100)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--color-royal-600)'
+                  color: 'var(--color-orange-600)'
                 }}>
                   <Home size={24} />
                 </div>
@@ -152,7 +152,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                     fontFamily: 'var(--font-heading)',
                     fontSize: '1.65rem', 
                     fontWeight: 800, 
-                    color: 'var(--color-navy-800)',
+                    color: 'var(--color-navy-900)',
                     lineHeight: 1
                   }}>
                     {houseCount}+
@@ -168,7 +168,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'var(--color-green-100)',
+                  background: '#FEF3C7',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -181,7 +181,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                     fontFamily: 'var(--font-heading)',
                     fontSize: '1.65rem', 
                     fontWeight: 800, 
-                    color: 'var(--color-navy-800)',
+                    color: 'var(--color-navy-900)',
                     lineHeight: 1
                   }}>
                     {campusCount}+
@@ -216,7 +216,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                 className="btn btn-secondary btn-lg"
                 style={{ fontWeight: 600 }}
               >
-                <Calculator size={19} color="var(--color-royal-600)" />
+                <Calculator size={19} color="var(--color-orange-600)" />
                 <span>GET A QUOTE</span>
               </button>
             </div>
@@ -232,15 +232,15 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
               paddingTop: '6px'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} color="var(--color-green-500)" />
+                <CheckCircle2 size={16} color="var(--color-orange-500)" />
                 <span>Eco-Friendly Sanitizers</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} color="var(--color-green-500)" />
+                <CheckCircle2 size={16} color="var(--color-orange-500)" />
                 <span>Industrial Scrubbers</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <CheckCircle2 size={16} color="var(--color-green-500)" />
+                <CheckCircle2 size={16} color="var(--color-orange-500)" />
                 <span>Transparent Pricing</span>
               </div>
             </div>
@@ -261,7 +261,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
               maxWidth: '540px',
               borderRadius: '24px',
               overflow: 'hidden',
-              boxShadow: '0 25px 50px -12px rgba(11, 37, 69, 0.22)',
+              boxShadow: '0 25px 50px -12px rgba(124, 45, 18, 0.22)',
               border: '4px solid #FFFFFF',
               background: '#FFFFFF'
             }}>
@@ -281,11 +281,11 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                background: 'linear-gradient(to top, rgba(7, 23, 44, 0.75) 0%, transparent 100%)',
+                background: 'linear-gradient(to top, rgba(28, 25, 23, 0.85) 0%, transparent 100%)',
                 padding: '24px 20px 16px 20px',
                 color: '#FFFFFF'
               }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cyan-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-orange-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Spotless Transformation
                 </div>
                 <div style={{ fontSize: '1.05rem', fontWeight: 700 }}>
@@ -311,7 +311,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                 width: '38px',
                 height: '38px',
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, #00A6FB 0%, #134074 100%)',
+                background: 'linear-gradient(135deg, #EA580C 0%, #F97316 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -320,7 +320,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                 <Home size={20} />
               </div>
               <div>
-                <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+                <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-navy-900)' }}>
                   1000+ Homes Cleaned
                 </div>
                 <div style={{ fontSize: '0.74rem', color: 'var(--color-text-light)', fontWeight: 600 }}>
@@ -347,7 +347,7 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                 width: '38px',
                 height: '38px',
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -356,10 +356,10 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
                 <Award size={20} />
               </div>
               <div>
-                <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+                <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-navy-900)' }}>
                   Trained Professionals
                 </div>
-                <div style={{ fontSize: '0.74rem', color: 'var(--color-green-600)', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.74rem', color: 'var(--color-orange-600)', fontWeight: 600 }}>
                   Verified & Experienced
                 </div>
               </div>
@@ -379,12 +379,12 @@ export const HeroSection = ({ onOpenBooking, onOpenQuote }) => {
               zIndex: 3,
               animation: 'floatAnim 5s ease-in-out infinite 0.5s'
             }}>
-              <Sparkles size={20} color="var(--color-festive-gold)" />
+              <Sparkles size={20} color="var(--color-orange-400)" />
               <div>
                 <div style={{ fontSize: '0.94rem', fontWeight: 800, color: '#FFFFFF' }}>
                   Professional Cleaning
                 </div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--color-cyan-400)', fontWeight: 500 }}>
+                <div style={{ fontSize: '0.72rem', color: 'var(--color-orange-300)', fontWeight: 500 }}>
                   100% Quality Guaranteed
                 </div>
               </div>

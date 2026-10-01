@@ -1,65 +1,78 @@
 /* ==========================================================================
    V CLEANING SERVICES - MODERN DESIGN SYSTEM & TOKENS
-   Theme: Navy Blue + Royal Blue + Sky Cyan + Fresh Leaf Green + White
+   Theme: Vibrant Energetic Orange + Warm Amber Gold + Charcoal Dark + Crisp White
    ========================================================================== */
 
 :root {
-  /* Primary Brand Colors */
-  --color-navy-900: #07172C;
-  --color-navy-800: #0B2545;
-  --color-navy-700: #133966;
-  --color-royal-600: #134074;
-  --color-royal-500: #1D569B;
-  --color-cyan-500: #00A6FB;
-  --color-cyan-400: #38BDF8;
-  --color-cyan-100: #E0F2FE;
-  
-  /* Eco Fresh Green */
-  --color-green-600: #059669;
-  --color-green-500: #10B981;
-  --color-green-400: #34D399;
-  --color-green-100: #D1FAE5;
-  --color-green-50: #ECFDF5;
+  /* Primary Brand Colors - Warm Orange Spectrum */
+  --color-orange-950: #431407;
+  --color-orange-900: #7C2D12;
+  --color-orange-800: #9A3412;
+  --color-orange-700: #C2410C;
+  --color-orange-600: #EA580C;
+  --color-orange-500: #F97316;
+  --color-orange-400: #FB923C;
+  --color-orange-300: #FDBA74;
+  --color-orange-200: #FED7AA;
+  --color-orange-100: #FFEDD5;
+  --color-orange-50: #FFF7ED;
 
-  /* Festive Aayudha Pooja Accents */
-  --color-festive-gold: #F59E0B;
-  --color-festive-amber: #D97706;
-  --color-festive-light: #FEF3C7;
-  --color-festive-gradient: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 50%, #FDE68A 100%);
-  --color-festive-border: #FCD34D;
+  /* Theme Tokens (Mapped cleanly to Orange Palette) */
+  --color-navy-900: #1C1917; /* Warm Deep Charcoal / Onyx */
+  --color-navy-800: #292524; /* Warm Dark Slate */
+  --color-navy-700: #44403C; /* Neutral Slate */
+  --color-royal-600: #EA580C; /* Rich Flame Orange */
+  --color-royal-500: #F97316; /* Pure Bright Orange */
+  --color-cyan-500: #EA580C;  /* Primary Accent Orange */
+  --color-cyan-400: #FB923C;  /* Lighter Orange Accent */
+  --color-cyan-100: #FFEDD5;  /* Soft Warm Peach Tint */
+  
+  /* Amber / Golden Sparkle Accent */
+  --color-green-600: #D97706;
+  --color-green-500: #F59E0B;
+  --color-green-400: #FBBF24;
+  --color-green-100: #FEF3C7;
+  --color-green-50: #FFFBEB;
+
+  /* Festive Campaign Accents */
+  --color-festive-gold: #EA580C;
+  --color-festive-amber: #C2410C;
+  --color-festive-light: #FFEDD5;
+  --color-festive-gradient: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 50%, #FED7AA 100%);
+  --color-festive-border: #FDBA74;
 
   /* Neutral Backgrounds & Surface Gradients */
-  --color-bg-body: #F4F8FC;
+  --color-bg-body: #FDFBF9;
   --color-bg-surface: #FFFFFF;
-  --color-bg-subtle: #EEF5FC;
-  --color-bg-dark: #07172C;
-  --color-bg-card-hover: #F8FBFE;
+  --color-bg-subtle: #FFF7ED;
+  --color-bg-dark: #1C1917;
+  --color-bg-card-hover: #FFF9F2;
 
   /* Text Colors */
-  --color-text-main: #0F172A;
-  --color-text-muted: #475569;
-  --color-text-light: #64748B;
+  --color-text-main: #1C1917;
+  --color-text-muted: #57534E;
+  --color-text-light: #78716C;
   --color-text-white: #FFFFFF;
-  --color-text-on-dark: #E2E8F0;
+  --color-text-on-dark: #F5F5F4;
 
   /* Borders & Dividers */
-  --color-border-light: #E2E8F0;
-  --color-border-subtle: #CBD5E1;
-  --color-border-focus: #00A6FB;
+  --color-border-light: #F2E8DE;
+  --color-border-subtle: #E7D7C8;
+  --color-border-focus: #EA580C;
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Plus Jakarta Sans', 'Poppins', var(--font-sans);
 
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(11, 37, 69, 0.05);
-  --shadow-sm: 0 4px 6px -1px rgba(11, 37, 69, 0.07), 0 2px 4px -2px rgba(11, 37, 69, 0.05);
-  --shadow-md: 0 10px 15px -3px rgba(11, 37, 69, 0.08), 0 4px 6px -4px rgba(11, 37, 69, 0.04);
-  --shadow-lg: 0 20px 25px -5px rgba(11, 37, 69, 0.1), 0 8px 10px -6px rgba(11, 37, 69, 0.05);
-  --shadow-xl: 0 25px 50px -12px rgba(11, 37, 69, 0.18);
-  --shadow-glow-cyan: 0 0 25px rgba(0, 166, 251, 0.35);
-  --shadow-glow-green: 0 0 25px rgba(16, 185, 129, 0.35);
-  --shadow-festive: 0 10px 30px rgba(217, 119, 6, 0.15);
+  --shadow-xs: 0 1px 2px rgba(124, 45, 18, 0.05);
+  --shadow-sm: 0 4px 6px -1px rgba(124, 45, 18, 0.08), 0 2px 4px -2px rgba(124, 45, 18, 0.04);
+  --shadow-md: 0 10px 15px -3px rgba(124, 45, 18, 0.1), 0 4px 6px -4px rgba(124, 45, 18, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(124, 45, 18, 0.12), 0 8px 10px -6px rgba(124, 45, 18, 0.06);
+  --shadow-xl: 0 25px 50px -12px rgba(124, 45, 18, 0.2);
+  --shadow-glow-cyan: 0 0 25px rgba(234, 88, 12, 0.35);
+  --shadow-glow-green: 0 0 25px rgba(249, 115, 22, 0.35);
+  --shadow-festive: 0 10px 30px rgba(234, 88, 12, 0.18);
 
   /* Border Radius */
   --radius-sm: 8px;
@@ -98,7 +111,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: var(--color-navy-800);
+  color: var(--color-navy-900);
   line-height: 1.25;
   font-weight: 700;
 }
@@ -163,19 +176,21 @@ img {
   align-items: center;
   gap: 8px;
   padding: 6px 16px;
-  background: var(--color-green-100);
-  color: var(--color-green-600);
+  background: var(--color-orange-100);
+  color: var(--color-orange-700);
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   border-radius: var(--radius-full);
   margin-bottom: 14px;
+  border: 1px solid var(--color-orange-200);
 }
 
 .section-badge.blue {
-  background: var(--color-cyan-100);
-  color: var(--color-royal-600);
+  background: var(--color-orange-100);
+  color: var(--color-orange-700);
+  border: 1px solid var(--color-orange-200);
 }
 
 .section-badge.festive {
@@ -188,7 +203,7 @@ img {
   font-size: 2.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--color-navy-800);
+  color: var(--color-navy-900);
   margin-bottom: 16px;
 }
 
@@ -226,66 +241,66 @@ img {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0B2545 0%, #134074 100%);
+  background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
   color: var(--color-text-white);
-  box-shadow: 0 4px 14px rgba(11, 37, 69, 0.25);
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #134074 0%, #00A6FB 100%);
-  box-shadow: 0 8px 20px rgba(0, 166, 251, 0.3);
+  background: linear-gradient(135deg, #C2410C 0%, #EA580C 100%);
+  box-shadow: 0 8px 22px rgba(234, 88, 12, 0.45);
   transform: translateY(-2px);
   color: var(--color-text-white);
 }
 
 .btn-accent {
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
   color: var(--color-text-white);
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
 }
 
 .btn-accent:hover {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.4);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
   background: var(--color-bg-surface);
-  color: var(--color-navy-800);
+  color: var(--color-orange-700);
   border-color: var(--color-border-light);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-cyan-500);
-  color: var(--color-cyan-500);
-  background: #F0F9FF;
+  border-color: var(--color-orange-500);
+  color: var(--color-orange-600);
+  background: #FFF7ED;
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--color-navy-800);
-  border: 1.5px solid var(--color-navy-800);
+  color: var(--color-orange-600);
+  border: 1.5px solid var(--color-orange-500);
 }
 
 .btn-outline:hover {
-  background: var(--color-navy-800);
+  background: var(--color-orange-500);
   color: var(--color-text-white);
 }
 
 .btn-festive {
-  background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
   color: #FFFFFF;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.35);
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.35);
 }
 
 .btn-festive:hover {
-  background: linear-gradient(135deg, #B45309 0%, #92400E 100%);
+  background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.45);
+  box-shadow: 0 8px 25px rgba(234, 88, 12, 0.45);
 }
 
 .btn-sm {
@@ -311,24 +326,24 @@ img {
 }
 
 .card:hover {
-  border-color: rgba(0, 166, 251, 0.3);
-  box-shadow: var(--shadow-lg);
+  border-color: rgba(234, 88, 12, 0.4);
+  box-shadow: 0 14px 28px -5px rgba(234, 88, 12, 0.14), var(--shadow-md);
   transform: translateY(-4px);
 }
 
 /* Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(254, 215, 170, 0.6);
 }
 
 .glass-dark {
-  background: rgba(11, 37, 69, 0.88);
+  background: rgba(28, 25, 23, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.25);
   color: #FFFFFF;
 }
 
@@ -339,7 +354,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(7, 23, 44, 0.7);
+  background: rgba(28, 25, 23, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: flex;
@@ -372,7 +387,7 @@ img {
   display: block;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-navy-800);
+  color: var(--color-navy-900);
   margin-bottom: 8px;
 }
 
@@ -389,8 +404,8 @@ img {
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--color-cyan-500);
-  box-shadow: 0 0 0 4px rgba(0, 166, 251, 0.12);
+  border-color: var(--color-orange-500);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
 }
 
 .form-textarea {
@@ -425,13 +440,13 @@ img {
 
 /* Utilities */
 .text-gradient {
-  background: linear-gradient(135deg, #0B2545 0%, #00A6FB 60%, #10B981 100%);
+  background: linear-gradient(135deg, #EA580C 0%, #F97316 50%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-festive {
-  background: linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%);
+  background: linear-gradient(135deg, #9A3412 0%, #EA580C 50%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

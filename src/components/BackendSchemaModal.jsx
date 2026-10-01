@@ -6,9 +6,9 @@ import {
   Copy, 
   Check, 
   Server, 
-  Sparkles,
-  Layers,
-  FileCode
+  Sparkles, 
+  Layers, 
+  FileCode 
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
@@ -138,7 +138,7 @@ CREATE INDEX idx_enquiries_status ON enquiries(status);
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--color-navy-800)',
+            color: 'var(--color-navy-900)',
             cursor: 'pointer'
           }}
         >
@@ -146,12 +146,12 @@ CREATE INDEX idx_enquiries_status ON enquiries(status);
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="section-badge blue" style={{ margin: 0 }}>
-            <Database size={14} /> ARCHITECTURE & BACKEND READINESS
+          <span className="section-badge" style={{ margin: 0 }}>
+            <Database size={14} color="var(--color-orange-600)" /> ARCHITECTURE & BACKEND READINESS
           </span>
         </div>
 
-        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy-900)' }}>
           Future Backend & Database Schema
         </h2>
 
@@ -164,13 +164,13 @@ CREATE INDEX idx_enquiries_status ON enquiries(status);
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: '#07172C',
+          background: '#1C1917',
           padding: '12px 18px',
           borderTopLeftRadius: '14px',
           borderTopRightRadius: '14px',
           color: '#FFFFFF'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--color-cyan-400)', fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--color-orange-400)', fontWeight: 600 }}>
             <FileCode size={16} />
             <span>schema.sql (PostgreSQL / Supabase DDL)</span>
           </div>
@@ -179,7 +179,7 @@ CREATE INDEX idx_enquiries_status ON enquiries(status);
             onClick={handleCopy}
             className="btn btn-sm"
             style={{
-              background: copied ? 'var(--color-green-600)' : 'rgba(255, 255, 255, 0.15)',
+              background: copied ? 'var(--color-orange-600)' : 'rgba(255, 255, 255, 0.15)',
               color: '#FFFFFF',
               border: 'none',
               padding: '6px 14px',
@@ -193,8 +193,8 @@ CREATE INDEX idx_enquiries_status ON enquiries(status);
 
         {/* Code View Area */}
         <pre style={{
-          background: '#0B2545',
-          color: '#E2E8F0',
+          background: '#292524',
+          color: '#F5F5F4',
           padding: '20px',
           borderBottomLeftRadius: '14px',
           borderBottomRightRadius: '14px',

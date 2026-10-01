@@ -23,8 +23,8 @@ export const HowItWorks = ({ onOpenBooking }) => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             EFFORTLESS PROCESS
           </span>
           <h2 className="section-title">
@@ -70,7 +70,7 @@ export const HowItWorks = ({ onOpenBooking }) => {
                     fontSize: '1.8rem',
                     fontWeight: 800,
                     fontFamily: 'var(--font-heading)',
-                    color: 'var(--color-cyan-500)',
+                    color: 'var(--color-orange-600)',
                     lineHeight: 1
                   }}>
                     {stepItem.step}
@@ -79,11 +79,12 @@ export const HowItWorks = ({ onOpenBooking }) => {
                     width: '48px',
                     height: '48px',
                     borderRadius: '14px',
-                    background: 'var(--color-cyan-100)',
-                    color: 'var(--color-royal-600)',
+                    background: 'var(--color-orange-100)',
+                    color: 'var(--color-orange-600)',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 10px rgba(234, 88, 12, 0.15)'
                   }}>
                     <Icon size={24} />
                   </div>
@@ -92,7 +93,7 @@ export const HowItWorks = ({ onOpenBooking }) => {
                 <h3 style={{
                   fontSize: '1.18rem',
                   fontWeight: 800,
-                  color: 'var(--color-navy-800)',
+                  color: 'var(--color-navy-900)',
                   marginBottom: '10px',
                   letterSpacing: '-0.01em'
                 }}>

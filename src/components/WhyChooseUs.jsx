@@ -31,8 +31,8 @@ export const WhyChooseUs = ({ onOpenBooking }) => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             EXCELLENCE IN EVERY CORNER
           </span>
           <h2 className="section-title">
@@ -45,7 +45,7 @@ export const WhyChooseUs = ({ onOpenBooking }) => {
 
         {/* Highlight Banner with Key Track Record */}
         <div style={{
-          background: 'linear-gradient(135deg, #0B2545 0%, #134074 100%)',
+          background: 'linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%)',
           borderRadius: '24px',
           padding: '32px 36px',
           color: '#FFFFFF',
@@ -54,10 +54,11 @@ export const WhyChooseUs = ({ onOpenBooking }) => {
           gridTemplateColumns: '1fr',
           gap: '24px',
           alignItems: 'center',
-          boxShadow: 'var(--shadow-xl)'
+          boxShadow: 'var(--shadow-xl)',
+          border: '1px solid rgba(249, 115, 22, 0.3)'
         }} className="why-highlight-grid">
           <div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--color-cyan-400)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
+            <div style={{ fontSize: '0.85rem', color: 'var(--color-orange-400)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>
               Proven Track Record
             </div>
             <h3 style={{ fontSize: '1.65rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.25 }}>
@@ -71,7 +72,7 @@ export const WhyChooseUs = ({ onOpenBooking }) => {
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
             <button
               onClick={() => onOpenBooking()}
-              className="btn btn-accent"
+              className="btn btn-primary"
               style={{ fontWeight: 700 }}
             >
               <span>Experience The Difference</span>
@@ -106,19 +107,19 @@ export const WhyChooseUs = ({ onOpenBooking }) => {
                   width: '50px',
                   height: '50px',
                   borderRadius: '14px',
-                  background: 'var(--color-cyan-100)',
-                  color: 'var(--color-royal-600)',
+                  background: 'var(--color-orange-100)',
+                  color: 'var(--color-orange-600)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 4px 10px rgba(0, 166, 251, 0.15)'
+                  boxShadow: '0 4px 12px rgba(234, 88, 12, 0.15)'
                 }}>
                   <IconComponent size={24} />
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <CheckCircle2 size={18} color="var(--color-green-500)" style={{ flexShrink: 0 }} />
-                  <h4 style={{ fontSize: '1.12rem', fontWeight: 800, color: 'var(--color-navy-800)', lineHeight: 1.3 }}>
+                  <CheckCircle2 size={18} color="var(--color-orange-500)" style={{ flexShrink: 0 }} />
+                  <h4 style={{ fontSize: '1.12rem', fontWeight: 800, color: 'var(--color-navy-900)', lineHeight: 1.3 }}>
                     {card.title}
                   </h4>
                 </div>

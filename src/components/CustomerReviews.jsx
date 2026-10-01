@@ -44,8 +44,8 @@ export const CustomerReviews = () => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             AUTHENTIC FEEDBACK
           </span>
           <h2 className="section-title">
@@ -86,8 +86,8 @@ export const CustomerReviews = () => {
                       <Star
                         key={i}
                         size={16}
-                        fill={i < rev.rating ? '#FFD166' : 'none'}
-                        color={i < rev.rating ? '#FFD166' : 'var(--color-border-subtle)'}
+                        fill={i < rev.rating ? '#F59E0B' : 'none'}
+                        color={i < rev.rating ? '#F59E0B' : 'var(--color-border-subtle)'}
                       />
                     ))}
                   </div>
@@ -100,7 +100,7 @@ export const CustomerReviews = () => {
                 {/* Comment */}
                 <p style={{
                   fontSize: '0.94rem',
-                  color: rev.isPlaceholder ? 'var(--color-text-light)' : 'var(--color-navy-800)',
+                  color: rev.isPlaceholder ? 'var(--color-text-light)' : 'var(--color-navy-900)',
                   fontStyle: rev.isPlaceholder ? 'italic' : 'normal',
                   lineHeight: 1.6,
                   marginBottom: '20px'
@@ -121,8 +121,8 @@ export const CustomerReviews = () => {
                   width: '42px',
                   height: '42px',
                   borderRadius: '50%',
-                  background: rev.isPlaceholder ? 'var(--color-border-subtle)' : 'var(--color-cyan-100)',
-                  color: 'var(--color-royal-600)',
+                  background: rev.isPlaceholder ? 'var(--color-border-subtle)' : 'var(--color-orange-100)',
+                  color: 'var(--color-orange-700)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -133,10 +133,10 @@ export const CustomerReviews = () => {
                 </div>
 
                 <div>
-                  <div style={{ fontSize: '0.94rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+                  <div style={{ fontSize: '0.94rem', fontWeight: 800, color: 'var(--color-navy-900)' }}>
                     {rev.customerName}
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--color-green-600)', fontWeight: 600 }}>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--color-orange-600)', fontWeight: 600 }}>
                     {rev.service}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--color-text-light)' }}>
@@ -164,7 +164,7 @@ export const CustomerReviews = () => {
         {showAddReviewModal && (
           <div className="modal-overlay" onClick={() => setShowAddReviewModal(false)}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '520px', padding: '32px 28px' }}>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-navy-800)', marginBottom: '8px' }}>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-navy-900)', marginBottom: '8px' }}>
                 Share Your Cleaning Experience
               </h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: '20px' }}>
@@ -172,7 +172,7 @@ export const CustomerReviews = () => {
               </p>
 
               {submittedMessage ? (
-                <div style={{ padding: '24px', background: 'var(--color-green-50)', borderRadius: '14px', textAlign: 'center', color: 'var(--color-green-600)' }}>
+                <div style={{ padding: '24px', background: '#FFF7ED', borderRadius: '14px', textAlign: 'center', color: 'var(--color-orange-600)' }}>
                   <CheckCircle2 size={36} style={{ margin: '0 auto 10px auto' }} />
                   <div style={{ fontWeight: 800 }}>Thank you for your review!</div>
                 </div>

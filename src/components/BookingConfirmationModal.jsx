@@ -25,7 +25,7 @@ export const BookingConfirmationModal = ({ booking, onClose, onOpenContact }) =>
         particleCount: 90,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#00A6FB', '#10B981', '#F59E0B', '#134074']
+        colors: ['#EA580C', '#F97316', '#F59E0B', '#FED7AA', '#FB923C']
       });
     } catch (e) {
       // Fallback silently if canvas-confetti is not rendered

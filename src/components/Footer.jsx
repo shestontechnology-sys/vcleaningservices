@@ -54,11 +54,11 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
 
   return (
     <footer style={{
-      background: 'linear-gradient(180deg, #07172C 0%, #05101F 100%)',
-      color: '#CBD5E1',
+      background: 'linear-gradient(180deg, #1C1917 0%, #0C0A09 100%)',
+      color: '#E7D7C8',
       paddingTop: '64px',
       paddingBottom: '36px',
-      borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+      borderTop: '2px solid rgba(249, 115, 22, 0.3)'
     }}>
       <div className="container">
         
@@ -72,22 +72,22 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
           
           {/* Col 1: Brand & Bio */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ background: '#FFFFFF', padding: '10px 14px', borderRadius: '16px', display: 'inline-block', width: 'fit-content' }}>
+            <div style={{ background: '#FFFFFF', padding: '10px 14px', borderRadius: '16px', display: 'inline-block', width: 'fit-content', boxShadow: '0 4px 14px rgba(0,0,0,0.2)' }}>
               <BrandLogo size="normal" />
             </div>
 
-            <p style={{ fontSize: '0.92rem', color: '#94A3B8', lineHeight: 1.6, marginTop: '4px' }}>
+            <p style={{ fontSize: '0.92rem', color: '#D6D3D1', lineHeight: 1.6, marginTop: '4px' }}>
               Professional cleaning company providing residential, commercial, and large-scale educational institutional cleaning services.
             </p>
 
-            <div style={{ fontSize: '0.85rem', color: 'var(--color-cyan-400)', fontWeight: 700 }}>
+            <div style={{ fontSize: '0.85rem', color: 'var(--color-orange-400)', fontWeight: 700 }}>
               1000+ Houses Cleaned &bull; 10+ College Campuses Cleaned
             </div>
 
             <div style={{ display: 'flex', gap: '10px', marginTop: '6px' }}>
               <button
                 onClick={() => onOpenBooking()}
-                className="btn btn-accent btn-sm"
+                className="btn btn-primary btn-sm"
                 style={{ fontWeight: 700 }}
               >
                 <Calendar size={14} />
@@ -109,16 +109,16 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
                     onClick={(e) => handleLinkClick(e, link.href, link.action)}
                     style={{
                       fontSize: '0.9rem',
-                      color: '#94A3B8',
+                      color: '#A8A29E',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '6px',
                       transition: 'color 150ms ease'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#00A6FB'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#94A3B8'}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#FB923C'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#A8A29E'}
                   >
-                    <ChevronRight size={14} color="var(--color-cyan-500)" />
+                    <ChevronRight size={14} color="var(--color-orange-500)" />
                     <span>{link.label}</span>
                   </a>
                 </li>
@@ -139,16 +139,16 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
                     onClick={(e) => handleLinkClick(e, '#services')}
                     style={{
                       fontSize: '0.9rem',
-                      color: '#94A3B8',
+                      color: '#A8A29E',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '6px',
                       transition: 'color 150ms ease'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#10B981'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#94A3B8'}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#FB923C'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#A8A29E'}
                   >
-                    <ChevronRight size={14} color="var(--color-green-500)" />
+                    <ChevronRight size={14} color="var(--color-orange-500)" />
                     <span>{srv}</span>
                   </a>
                 </li>
@@ -163,7 +163,7 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
             </h4>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.92rem' }}>
-              <Mail size={16} color="var(--color-cyan-400)" />
+              <Mail size={16} color="var(--color-orange-400)" />
               <a href={`mailto:${siteConfig.brand.email}`} style={{ color: '#FFFFFF', fontWeight: 600 }}>
                 {siteConfig.brand.email}
               </a>
@@ -174,11 +174,12 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
               padding: '12px',
               background: 'rgba(255, 255, 255, 0.05)',
               borderRadius: '12px',
+              border: '1px solid rgba(249, 115, 22, 0.2)',
               fontSize: '0.78rem',
-              color: '#94A3B8',
+              color: '#D6D3D1',
               lineHeight: 1.4
             }}>
-              <ShieldCheck size={14} color="var(--color-green-400)" style={{ display: 'inline', marginRight: '4px' }} />
+              <ShieldCheck size={14} color="var(--color-orange-400)" style={{ display: 'inline', marginRight: '4px' }} />
               Field cleaning professionals trained through industry experience associated with Urban Company and NoBroker workflows.
             </div>
 
@@ -187,7 +188,7 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
               style={{
                 background: 'none',
                 border: 'none',
-                color: 'var(--color-cyan-400)',
+                color: 'var(--color-orange-400)',
                 fontSize: '0.8rem',
                 textAlign: 'left',
                 cursor: 'pointer',
@@ -214,12 +215,12 @@ export const Footer = ({ onOpenBooking, onOpenOffers, onOpenAbout, onOpenSchema 
           flexWrap: 'wrap',
           gap: '14px',
           fontSize: '0.85rem',
-          color: '#64748B'
+          color: '#A8A29E'
         }}>
           <div>
             &copy; {currentYear} <strong>{siteConfig.brand.name}</strong>. All Rights Reserved.
           </div>
-          <div>
+          <div style={{ color: 'var(--color-orange-300)' }}>
             {siteConfig.brand.tagline}
           </div>
         </div>

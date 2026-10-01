@@ -68,7 +68,7 @@ export const DynamicQuoteModal = ({ initialServiceId, onClose, onProceedToBook }
         {/* Header */}
         <div style={{
           padding: '22px 24px',
-          background: 'linear-gradient(135deg, #0B2545 0%, #134074 100%)',
+          background: 'linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%)',
           color: '#FFFFFF',
           position: 'relative'
         }}>
@@ -95,15 +95,15 @@ export const DynamicQuoteModal = ({ initialServiceId, onClose, onProceedToBook }
           </button>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-            <Calculator size={18} color="var(--color-cyan-400)" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-cyan-400)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            <Calculator size={18} color="var(--color-orange-400)" />
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-orange-400)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               INSTANT ESTIMATOR
             </span>
           </div>
           <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#FFFFFF' }}>
             Dynamic Price & Quote Calculator
           </h2>
-          <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.8)', marginTop: '2px' }}>
+          <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.85)', marginTop: '2px' }}>
             Transparent pricing based on property configuration, scope, and specific add-ons.
           </p>
         </div>

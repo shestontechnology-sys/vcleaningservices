@@ -15,8 +15,8 @@ export const FAQSection = () => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             CLARITY & ASSISTANCE
           </span>
           <h2 className="section-title">
@@ -41,12 +41,12 @@ export const FAQSection = () => {
               <div
                 key={index}
                 style={{
-                  border: isOpen ? '1.5px solid var(--color-cyan-500)' : '1px solid var(--color-border-light)',
+                  border: isOpen ? '1.5px solid var(--color-orange-500)' : '1px solid var(--color-border-light)',
                   borderRadius: '16px',
-                  background: isOpen ? '#F8FBFE' : '#FFFFFF',
+                  background: isOpen ? '#FFF7ED' : '#FFFFFF',
                   overflow: 'hidden',
                   transition: 'all var(--transition-fast)',
-                  boxShadow: isOpen ? 'var(--shadow-sm)' : 'none'
+                  boxShadow: isOpen ? '0 4px 14px rgba(234, 88, 12, 0.08)' : 'none'
                 }}
               >
                 <button
@@ -68,7 +68,7 @@ export const FAQSection = () => {
                   <span style={{
                     fontSize: '1.05rem',
                     fontWeight: 700,
-                    color: isOpen ? 'var(--color-royal-600)' : 'var(--color-navy-800)',
+                    color: isOpen ? 'var(--color-orange-700)' : 'var(--color-navy-900)',
                     lineHeight: 1.3
                   }}>
                     {faq.question}
@@ -77,12 +77,12 @@ export const FAQSection = () => {
                     width: '32px',
                     height: '32px',
                     borderRadius: '50%',
-                    background: isOpen ? 'var(--color-cyan-100)' : 'var(--color-bg-subtle)',
+                    background: isOpen ? 'var(--color-orange-100)' : 'var(--color-bg-subtle)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    color: isOpen ? 'var(--color-royal-600)' : 'var(--color-text-light)',
+                    color: isOpen ? 'var(--color-orange-600)' : 'var(--color-text-light)',
                     transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                     transition: 'transform 200ms ease'
                   }}>
@@ -96,7 +96,7 @@ export const FAQSection = () => {
                     color: 'var(--color-text-muted)',
                     fontSize: '0.95rem',
                     lineHeight: 1.6,
-                    borderTop: '1px solid var(--color-border-light)',
+                    borderTop: '1px solid var(--color-orange-100)',
                     paddingTop: '16px'
                   }}>
                     {faq.answer}

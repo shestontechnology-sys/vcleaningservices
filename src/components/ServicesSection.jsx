@@ -30,8 +30,8 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             COMPREHENSIVE CATALOG
           </span>
           <h2 className="section-title">
@@ -69,15 +69,16 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                   padding: '10px 20px',
                   borderRadius: 'var(--radius-full)',
                   fontSize: '0.92rem',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: 'pointer',
-                  border: isActive ? '1.5px solid var(--color-royal-600)' : '1px solid var(--color-border-light)',
-                  background: isActive ? 'var(--color-navy-800)' : 'var(--color-bg-subtle)',
-                  color: isActive ? '#FFFFFF' : 'var(--color-navy-800)',
+                  border: isActive ? '1.5px solid var(--color-orange-600)' : '1px solid var(--color-border-light)',
+                  background: isActive ? 'linear-gradient(135deg, #EA580C 0%, #F97316 100%)' : '#FFF7ED',
+                  color: isActive ? '#FFFFFF' : 'var(--color-orange-900)',
+                  boxShadow: isActive ? '0 4px 14px rgba(234, 88, 12, 0.3)' : 'none',
                   transition: 'all var(--transition-fast)'
                 }}
               >
-                <Icon size={16} color={isActive ? '#FFFFFF' : 'var(--color-royal-600)'} />
+                <Icon size={16} color={isActive ? '#FFFFFF' : 'var(--color-orange-600)'} />
                 <span>{tab.label}</span>
               </button>
             );
@@ -127,7 +128,7 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                     position: 'absolute',
                     top: '14px',
                     left: '14px',
-                    background: 'rgba(11, 37, 69, 0.88)',
+                    background: 'rgba(28, 25, 23, 0.88)',
                     backdropFilter: 'blur(8px)',
                     color: '#FFFFFF',
                     padding: '4px 10px',
@@ -138,7 +139,7 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                     alignItems: 'center',
                     gap: '4px'
                   }}>
-                    <Star size={12} fill="#FFD166" color="#FFD166" />
+                    <Star size={12} fill="#F59E0B" color="#F59E0B" />
                     <span>{service.rating} ({service.reviewsCount})</span>
                   </div>
 
@@ -151,12 +152,13 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                     borderRadius: '8px',
                     fontSize: '0.75rem',
                     fontWeight: 600,
-                    color: 'var(--color-navy-800)',
+                    color: 'var(--color-orange-800)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '5px'
+                    gap: '5px',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
                   }}>
-                    <Clock size={12} color="var(--color-green-600)" />
+                    <Clock size={12} color="var(--color-orange-600)" />
                     <span>{service.duration}</span>
                   </div>
                 </div>
@@ -167,7 +169,7 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                   <h3 style={{
                     fontSize: '1.25rem',
                     fontWeight: 800,
-                    color: 'var(--color-navy-800)',
+                    color: 'var(--color-navy-900)',
                     marginBottom: '8px',
                     lineHeight: 1.3
                   }}>
@@ -191,21 +193,22 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                     marginBottom: '20px',
                     background: 'var(--color-bg-subtle)',
                     padding: '14px',
-                    borderRadius: '12px'
+                    borderRadius: '12px',
+                    border: '1px solid var(--color-orange-100)'
                   }}>
-                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-navy-800)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-orange-800)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                       Key Inclusions:
                     </div>
                     {service.included.slice(0, 4).map((inc, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: 'var(--color-navy-800)' }}>
-                        <div style={{ color: 'var(--color-green-500)', flexShrink: 0, marginTop: '2px' }}>
+                      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.84rem', color: 'var(--color-navy-900)' }}>
+                        <div style={{ color: 'var(--color-orange-500)', flexShrink: 0, marginTop: '2px' }}>
                           <Check size={14} strokeWidth={2.5} />
                         </div>
                         <span style={{ lineHeight: 1.3 }}>{inc}</span>
                       </div>
                     ))}
                     {service.included.length > 4 && (
-                      <div style={{ fontSize: '0.78rem', color: 'var(--color-cyan-500)', fontWeight: 600, marginTop: '2px' }}>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--color-orange-600)', fontWeight: 600, marginTop: '2px' }}>
                         + {service.included.length - 4} more included tasks
                       </div>
                     )}
@@ -216,7 +219,7 @@ export const ServicesSection = ({ onSelectService, onOpenBooking, onOpenQuote })
                     <div style={{ fontSize: '0.82rem', color: 'var(--color-text-light)', fontWeight: 600 }}>
                       Transparent Pricing:
                     </div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy-800)', marginTop: '2px' }}>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-orange-700)', marginTop: '2px' }}>
                       {service.pricingNote}
                     </div>
                   </div>

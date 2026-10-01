@@ -7,57 +7,76 @@ import {
   X, 
   Calendar, 
   Tag, 
-  CheckCircle2,
-  ChevronRight
+  ChevronRight,
+  ShieldCheck,
+  Phone,
+  Home,
+  Briefcase,
+  Award,
+  HelpCircle,
+  Info,
+  Layers,
+  Sparkle
 } from 'lucide-react';
 
-export const BrandLogo = ({ size = 'normal' }) => {
+export const BrandLogo = ({ size = 'normal', light = false }) => {
   const isLarge = size === 'large';
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
+    <div style={{ 
+      display: 'inline-flex', 
+      alignItems: 'center', 
+      gap: '12px', 
+      cursor: 'pointer',
+      userSelect: 'none',
+      flexShrink: 0
+    }}>
       <div style={{
-        width: isLarge ? '52px' : '44px',
-        height: isLarge ? '52px' : '44px',
-        borderRadius: '14px',
-        background: 'linear-gradient(135deg, #0B2545 0%, #134074 50%, #00A6FB 100%)',
+        width: isLarge ? '52px' : '46px',
+        height: isLarge ? '52px' : '46px',
+        borderRadius: '50%',
+        background: '#FFFFFF',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 6px 16px rgba(11, 37, 69, 0.25)',
+        boxShadow: '0 4px 14px rgba(234, 88, 12, 0.28)',
+        border: '2.5px solid #EA580C',
         position: 'relative',
-        flexShrink: 0
-      }}>
-        {/* Stylized V combined with house roofline and eco leaf sparkle */}
-        <svg width={isLarge ? "32" : "26"} height={isLarge ? "32" : "26"} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Subtle house silhouette roof */}
-          <path d="M50 15 L18 42 L24 42 L50 20 L76 42 L82 42 Z" fill="#00A6FB" opacity="0.85" />
-          {/* Bold Modern Stylized V */}
-          <path d="M22 32 L46 84 Q50 90 54 84 L78 32 Q82 24 72 24 L60 24 L50 62 L40 24 L28 24 Q18 24 22 32 Z" fill="#FFFFFF" />
-          {/* Green Eco Leaf accent */}
-          <path d="M74 16 C84 14 90 22 88 32 C78 34 72 26 74 16 Z" fill="#10B981" />
-          {/* Gleam sparkle */}
-          <path d="M78 8 L80 14 L86 16 L80 18 L78 24 L76 18 L70 16 L76 14 Z" fill="#FFD166" />
-        </svg>
+        flexShrink: 0,
+        overflow: 'hidden',
+        transition: 'transform 200ms ease'
+      }} className="logo-icon-box">
+        <img 
+          src="/logo.png" 
+          alt="V Cleaning Services Logo"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ 
           fontFamily: 'var(--font-heading)',
           fontWeight: 800, 
-          fontSize: isLarge ? '1.45rem' : '1.2rem', 
-          color: 'var(--color-navy-800)',
-          letterSpacing: '-0.02em',
-          lineHeight: 1.1
+          fontSize: isLarge ? '1.35rem' : '1.18rem', 
+          color: light ? '#FFFFFF' : 'var(--color-navy-900)',
+          letterSpacing: '-0.025em',
+          lineHeight: 1.15,
+          whiteSpace: 'nowrap'
         }}>
-          V CLEANING <span style={{ color: 'var(--color-cyan-500)' }}>SERVICES</span>
+          V CLEANING <span style={{ color: 'var(--color-orange-500)' }}>SERVICES</span>
         </div>
         <div style={{ 
-          fontSize: isLarge ? '0.78rem' : '0.72rem', 
-          fontWeight: 600, 
-          color: 'var(--color-green-600)',
+          fontSize: isLarge ? '0.74rem' : '0.68rem', 
+          fontWeight: 700, 
+          color: light ? 'rgba(255, 255, 255, 0.9)' : 'var(--color-orange-700)',
           letterSpacing: '0.04em',
-          textTransform: 'uppercase'
-        }}>
+          textTransform: 'uppercase',
+          lineHeight: 1.2,
+          whiteSpace: 'nowrap'
+        }} className="brand-tagline">
           {siteConfig.brand.tagline}
         </div>
       </div>
@@ -71,37 +90,54 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Prevent background scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { label: 'Home', href: '#hero' },
     { label: 'Services', href: '#services' },
-    { label: 'Why Choose Us', href: '#why-choose-us' },
+    { label: 'Why Us', href: '#why-choose-us' },
+    { label: 'How It Works', href: '#how-it-works' },
     { label: 'Our Work', href: '#our-work' },
     { 
-      label: 'Aayudha Pooja Offer', 
+      label: 'Festive Offer', 
       href: '#festive-offer',
       isFestive: true 
     },
-    { label: 'How It Works', href: '#how-it-works' },
     { label: 'FAQ', href: '#faq' },
+    { label: 'About Us', isModal: true },
     { label: 'Contact', href: '#contact' }
   ];
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e, item) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
+    if (item.isModal) {
+      onOpenAbout();
+      return;
+    }
+    const element = document.querySelector(item.href);
     if (element) {
-      const headerOffset = 80;
+      const headerOffset = 75;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({
@@ -112,233 +148,405 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
   };
 
   return (
-    <header style={{
-      position: 'sticky',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 900,
-      transition: 'all 300ms ease',
-      backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.9)',
-      backdropFilter: 'blur(16px)',
-      boxShadow: isScrolled ? '0 4px 20px rgba(11, 37, 69, 0.08)' : '0 1px 4px rgba(11, 37, 69, 0.04)',
-      borderBottom: '1px solid var(--color-border-light)',
-      padding: isScrolled ? '12px 0' : '18px 0'
-    }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <header 
+      className="main-sticky-header"
+      style={{
+        position: 'sticky',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 900,
+        transition: 'background-color 250ms ease, box-shadow 250ms ease, padding 250ms ease',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        boxShadow: isScrolled ? '0 4px 20px rgba(124, 45, 18, 0.08)' : '0 1px 3px rgba(124, 45, 18, 0.04)',
+        borderBottom: '1px solid var(--color-border-light)',
+        padding: isScrolled ? '10px 0' : '14px 0'
+      }}
+    >
+      <div className="container" style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+        gap: '16px'
+      }}>
         
-        {/* Logo */}
-        <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} style={{ textDecoration: 'none' }}>
-          <BrandLogo size={isScrolled ? 'normal' : 'normal'} />
+        {/* 1. Left: Brand Logo */}
+        <a 
+          href="#hero" 
+          onClick={(e) => handleNavClick(e, { href: '#hero' })} 
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+          aria-label="V Cleaning Services Home"
+        >
+          <BrandLogo size="normal" />
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav style={{ display: 'none', alignItems: 'center', gap: '26px' }} className="desktop-nav">
-          {navLinks.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              style={{
-                fontSize: '0.92rem',
-                fontWeight: item.isFestive ? 700 : 500,
-                color: item.isFestive ? 'var(--color-festive-amber)' : 'var(--color-navy-800)',
-                padding: item.isFestive ? '5px 12px' : '6px 2px',
-                borderRadius: item.isFestive ? '20px' : '0',
-                background: item.isFestive ? 'var(--color-festive-light)' : 'transparent',
-                border: item.isFestive ? '1px solid var(--color-festive-border)' : 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '5px',
-                transition: 'all var(--transition-fast)'
-              }}
-              className="nav-hover-item"
-            >
-              {item.isFestive && <Tag size={13} />}
-              {item.label}
-            </a>
-          ))}
-          <button
-            onClick={onOpenAbout}
-            style={{
-              background: 'none',
-              border: 'none',
-              fontSize: '0.92rem',
-              fontWeight: 500,
-              color: 'var(--color-navy-800)',
-              cursor: 'pointer',
-              padding: '6px 2px'
-            }}
-          >
-            About Us
-          </button>
+        {/* 2. Center: Enclosed Floating Navigation Box */}
+        <nav 
+          className="desktop-nav-box" 
+          aria-label="Main Navigation Box"
+        >
+          {navLinks.map((item) => {
+            if (item.isModal) {
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => onOpenAbout()}
+                  className="nav-box-pill nav-box-button"
+                  type="button"
+                >
+                  <span>{item.label}</span>
+                </button>
+              );
+            }
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item)}
+                className={`nav-box-pill ${item.isFestive ? 'nav-box-festive' : ''}`}
+              >
+                {item.isFestive && <Sparkles size={13} style={{ flexShrink: 0 }} />}
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
         </nav>
 
-        {/* Right CTA Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        {/* 3. Right: CTA Actions & Mobile Toggle */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '10px',
+          flexShrink: 0
+        }}>
+          {/* Quick email pill link on wide screens */}
           <a
             href={`mailto:${siteConfig.brand.email}`}
-            style={{
-              display: 'none',
-              alignItems: 'center',
-              gap: '8px',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              color: 'var(--color-navy-800)',
-              padding: '8px 14px',
-              borderRadius: 'var(--radius-md)',
-              background: 'var(--color-bg-subtle)',
-              border: '1px solid var(--color-border-light)'
-            }}
-            className="desktop-email"
+            className="desktop-email-pill"
+            title={`Send email to ${siteConfig.brand.email}`}
           >
-            <Mail size={15} color="var(--color-cyan-500)" />
-            <span>{siteConfig.brand.email}</span>
+            <Mail size={15} color="var(--color-orange-500)" style={{ flexShrink: 0 }} />
+            <span style={{ maxWidth: '170px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {siteConfig.brand.email}
+            </span>
           </a>
 
+          {/* Primary Book Now CTA */}
           <button
             onClick={() => onOpenBooking()}
-            className="btn btn-primary btn-sm"
-            style={{ fontWeight: 700, padding: '10px 20px', letterSpacing: '0.02em' }}
+            className="btn btn-primary nav-book-btn"
+            style={{ 
+              fontWeight: 700, 
+              letterSpacing: '0.02em',
+              whiteSpace: 'nowrap',
+              height: '40px',
+              padding: '0 18px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '7px',
+              fontSize: '0.9rem'
+            }}
           >
-            <Calendar size={16} />
+            <Calendar size={15} style={{ flexShrink: 0 }} />
             <span>BOOK NOW</span>
           </button>
 
           {/* Mobile Menu Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '40px',
-              height: '40px',
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--color-border-light)',
-              background: 'var(--color-bg-surface)',
-              color: 'var(--color-navy-800)',
-              cursor: 'pointer'
-            }}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
             className="mobile-menu-btn"
+            type="button"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* 4. Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div style={{
-          position: 'fixed',
-          top: '70px',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(255, 255, 255, 0.98)',
-          backdropFilter: 'blur(16px)',
-          zIndex: 899,
-          padding: '24px 20px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          overflowY: 'auto',
-          animation: 'fadeIn 200ms ease-out'
-        }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div style={{ 
-              padding: '12px 16px', 
-              background: 'var(--color-festive-light)', 
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--color-festive-border)',
-              marginBottom: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }} onClick={(e) => handleNavClick(e, '#festive-offer')}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-festive-amber)', fontWeight: 700 }}>
-                <Sparkles size={18} />
+        <div 
+          className="mobile-drawer-overlay"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <div 
+            className="mobile-drawer-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Festive Campaign Banner Highlight */}
+            <div 
+              className="mobile-festive-card"
+              onClick={(e) => handleNavClick(e, { href: '#festive-offer' })}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#9A3412', fontWeight: 700, fontSize: '0.95rem' }}>
+                <Sparkles size={18} color="#EA580C" />
                 <span>Aayudha Pooja Special Offer</span>
               </div>
-              <ChevronRight size={18} color="var(--color-festive-amber)" />
+              <ChevronRight size={18} color="#EA580C" />
             </div>
 
-            {navLinks.map((item) => (
+            {/* Nav list enclosed inside card box */}
+            <div className="mobile-nav-box">
+              {navLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href || '#'}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className="mobile-nav-item"
+                >
+                  <span>{item.label}</span>
+                  <ChevronRight size={16} color="var(--color-text-light)" />
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile Footer CTAs */}
+            <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '16px', borderTop: '1px solid var(--color-border-light)' }}>
               <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '14px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: '1.05rem',
-                  fontWeight: 600,
-                  color: 'var(--color-navy-800)',
-                  borderBottom: '1px solid var(--color-bg-subtle)'
-                }}
+                href={`mailto:${siteConfig.brand.email}`}
+                className="btn btn-secondary"
+                style={{ width: '100%', justifyContent: 'center', height: '44px' }}
               >
-                <span>{item.label}</span>
-                <ChevronRight size={18} color="var(--color-text-light)" />
+                <Mail size={17} color="var(--color-orange-500)" />
+                <span>Email: {siteConfig.brand.email}</span>
               </a>
-            ))}
-
-            <button
-              onClick={() => { setMobileMenuOpen(false); onOpenAbout(); }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '14px 16px',
-                borderRadius: 'var(--radius-md)',
-                fontSize: '1.05rem',
-                fontWeight: 600,
-                color: 'var(--color-navy-800)',
-                background: 'transparent',
-                border: 'none',
-                textAlign: 'left',
-                width: '100%',
-                cursor: 'pointer'
-              }}
-            >
-              <span>About V Cleaning Services</span>
-              <ChevronRight size={18} color="var(--color-text-light)" />
-            </button>
-          </div>
-
-          <div style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <a
-              href={`mailto:${siteConfig.brand.email}`}
-              className="btn btn-secondary"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              <Mail size={18} color="var(--color-cyan-500)" />
-              <span>Email: {siteConfig.brand.email}</span>
-            </a>
-            <button
-              onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
-              className="btn btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              <Calendar size={18} />
-              <span>BOOK A CLEANING NOW</span>
-            </button>
+              <button
+                onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center', height: '44px', fontWeight: 700 }}
+                type="button"
+              >
+                <Calendar size={17} />
+                <span>BOOK A CLEANING NOW</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Inline styles for responsive header */}
+      {/* Embedded Component CSS for Responsive Behavior & Pixel-Perfect Alignment */}
       <style>{`
-        @media (min-width: 992px) {
-          .desktop-nav { display: flex !important; }
-          .desktop-email { display: inline-flex !important; }
-          .mobile-menu-btn { display: none !important; }
+        /* Floating Navigation Box (Capsule / Island Container) */
+        .desktop-nav-box {
+          display: none;
+          align-items: center;
+          gap: 3px;
+          margin: 0 auto;
+          background: rgba(255, 247, 237, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(253, 186, 116, 0.7);
+          border-radius: 9999px;
+          padding: 4px 6px;
+          box-shadow: 0 2px 8px rgba(124, 45, 18, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          transition: all 200ms ease;
         }
-        .nav-hover-item:hover {
-          color: var(--color-cyan-500) !important;
+
+        .desktop-nav-box:hover {
+          border-color: rgba(234, 88, 12, 0.45);
+          box-shadow: 0 4px 14px rgba(124, 45, 18, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        /* Nav Pills inside the Box */
+        .nav-box-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          height: 34px;
+          padding: 0 11px;
+          font-size: 0.86rem;
+          font-weight: 600;
+          color: var(--color-navy-900);
+          text-decoration: none;
+          border-radius: 9999px;
+          transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+          white-space: nowrap;
+          cursor: pointer;
+          background: transparent;
+          border: none;
+          line-height: 1;
+        }
+
+        .nav-box-pill:hover {
+          color: var(--color-orange-600);
+          background: #FFFFFF;
+          box-shadow: 0 2px 6px rgba(124, 45, 18, 0.1);
+          transform: translateY(-1px);
+        }
+
+        .nav-box-button {
+          font-family: inherit;
+        }
+
+        /* Festive Badge inside the Box */
+        .nav-box-festive {
+          color: #9A3412 !important;
+          background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+          border: 1px solid #FDBA74;
+          padding: 0 11px;
+          font-weight: 700;
+          box-shadow: 0 1px 3px rgba(234, 88, 12, 0.12);
+        }
+
+        .nav-box-festive:hover {
+          background: #FED7AA;
+          color: #7C2D12 !important;
+          box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
+          transform: translateY(-1px);
+        }
+
+        .desktop-email-pill {
+          display: none;
+          align-items: center;
+          gap: 7px;
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: var(--color-navy-900);
+          padding: 0 12px;
+          height: 38px;
+          border-radius: var(--radius-md);
+          background: var(--color-bg-subtle);
+          border: 1px solid var(--color-border-light);
+          text-decoration: none;
+          transition: all 180ms ease;
+        }
+
+        .desktop-email-pill:hover {
+          border-color: var(--color-orange-500);
+          color: var(--color-orange-600);
+          background: #FFFFFF;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--color-border-light);
+          background: var(--color-bg-surface);
+          color: var(--color-navy-900);
+          cursor: pointer;
+          transition: all 180ms ease;
+          flex-shrink: 0;
+        }
+
+        .mobile-menu-btn:hover {
+          background: var(--color-bg-subtle);
+          border-color: var(--color-orange-500);
+          color: var(--color-orange-600);
+        }
+
+        /* Desktop Breakpoints */
+        @media (min-width: 1040px) {
+          .desktop-nav-box {
+            display: inline-flex !important;
+          }
+          .mobile-menu-btn {
+            display: none !important;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .desktop-email-pill {
+            display: inline-flex !important;
+          }
+          .nav-box-pill {
+            padding: 0 13px;
+            font-size: 0.88rem;
+          }
+          .desktop-nav-box {
+            gap: 4px;
+            padding: 5px 8px;
+          }
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 540px) {
+          .brand-tagline {
+            display: none;
+          }
+          .nav-book-btn span {
+            display: inline;
+          }
+          .nav-book-btn {
+            padding: 0 12px !important;
+            font-size: 0.82rem !important;
+            height: 36px !important;
+          }
+        }
+
+        /* Mobile Drawer Styles */
+        .mobile-drawer-overlay {
+          position: fixed;
+          top: 64px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(28, 25, 23, 0.5);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          z-index: 899;
+          animation: fadeIn 180ms ease-out;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .mobile-drawer-content {
+          background: #FFFFFF;
+          border-bottom: 2px solid var(--color-border-light);
+          padding: 20px 18px;
+          max-height: calc(100vh - 70px);
+          overflow-y: auto;
+          box-shadow: 0 20px 30px rgba(124, 45, 18, 0.15);
+          animation: scaleUp 200ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-festive-card {
+          padding: 12px 14px;
+          background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+          border-radius: var(--radius-md);
+          border: 1px solid #FDBA74;
+          margin-bottom: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+        }
+
+        .mobile-nav-box {
+          background: var(--color-bg-subtle);
+          border: 1px solid var(--color-border-light);
+          border-radius: var(--radius-md);
+          padding: 6px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .mobile-nav-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 14px;
+          border-radius: var(--radius-sm);
+          font-size: 0.98rem;
+          font-weight: 600;
+          color: var(--color-navy-900);
+          text-decoration: none;
+          transition: background 150ms ease;
+        }
+
+        .mobile-nav-item:hover, .mobile-nav-item:active {
+          background: #FFFFFF;
+          color: var(--color-orange-600);
+          box-shadow: 0 1px 4px rgba(124, 45, 18, 0.05);
         }
       `}</style>
     </header>

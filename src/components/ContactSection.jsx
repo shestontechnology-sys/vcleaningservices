@@ -59,8 +59,8 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-badge blue">
-            <Sparkles size={14} />
+          <span className="section-badge">
+            <Sparkles size={14} color="var(--color-orange-600)" />
             REACH OUR TEAM
           </span>
           <h2 className="section-title">
@@ -87,7 +87,7 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '26px' }}>
             
             <div>
-              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-navy-800)', marginBottom: '8px' }}>
+              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-navy-900)', marginBottom: '8px' }}>
                 Quick Direct Connect
               </h3>
               <p style={{ fontSize: '0.94rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
@@ -108,11 +108,11 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
                   background: 'var(--color-bg-subtle)',
                   borderRadius: '16px',
                   border: '1px solid var(--color-border-light)',
-                  color: 'var(--color-navy-800)',
+                  color: 'var(--color-navy-900)',
                   transition: 'all var(--transition-fast)'
                 }}
               >
-                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'var(--color-cyan-100)', color: 'var(--color-royal-600)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'var(--color-orange-100)', color: 'var(--color-orange-600)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Mail size={20} />
                 </div>
                 <div>
@@ -130,7 +130,7 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
                 borderRadius: '16px',
                 border: '1px solid var(--color-border-light)'
               }}>
-                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'var(--color-green-100)', color: 'var(--color-green-600)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#FEF3C7', color: 'var(--color-green-600)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <MessageSquare size={20} />
                 </div>
                 <div>
@@ -148,12 +148,12 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
                 borderRadius: '16px',
                 border: '1px solid var(--color-border-light)'
               }}>
-                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#F1F5F9', color: 'var(--color-navy-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'var(--color-orange-100)', color: 'var(--color-orange-700)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Clock size={20} />
                 </div>
                 <div>
                   <div style={{ fontSize: '0.78rem', color: 'var(--color-text-light)', fontWeight: 600 }}>Working Hours</div>
-                  <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--color-navy-800)' }}>{siteConfig.brand.workingHours}</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--color-navy-900)' }}>{siteConfig.brand.workingHours}</div>
                 </div>
               </div>
 
@@ -196,22 +196,22 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
             padding: '24px',
             border: '1px solid var(--color-border-light)'
           }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy-800)', marginBottom: '18px' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy-900)', marginBottom: '18px' }}>
               Send a Service Enquiry
             </h3>
 
             {submitted ? (
               <div style={{
                 padding: '36px 20px',
-                background: 'var(--color-green-50)',
-                border: '1.5px solid var(--color-green-100)',
+                background: '#FFF7ED',
+                border: '1.5px solid var(--color-orange-200)',
                 borderRadius: '16px',
                 textAlign: 'center',
-                color: 'var(--color-green-600)',
+                color: 'var(--color-orange-700)',
                 animation: 'scaleUp 250ms ease'
               }}>
-                <CheckCircle2 size={48} style={{ margin: '0 auto 12px auto' }} />
-                <h4 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+                <CheckCircle2 size={48} color="var(--color-orange-600)" style={{ margin: '0 auto 12px auto' }} />
+                <h4 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy-900)' }}>
                   Thank you! Our team will contact you shortly.
                 </h4>
                 <p style={{ fontSize: '0.92rem', color: 'var(--color-text-muted)', marginTop: '8px' }}>
@@ -231,7 +231,7 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
-                    {errors.name && <span style={{ color: '#E11D48', fontSize: '0.78rem' }}>{errors.name}</span>}
+                    {errors.name && <span style={{ color: '#EA580C', fontSize: '0.78rem' }}>{errors.name}</span>}
                   </div>
 
                   <div className="form-group" style={{ margin: 0 }}>
@@ -243,7 +243,7 @@ export const ContactSection = ({ onOpenBooking, onOpenQuote }) => {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
-                    {errors.phone && <span style={{ color: '#E11D48', fontSize: '0.78rem' }}>{errors.phone}</span>}
+                    {errors.phone && <span style={{ color: '#EA580C', fontSize: '0.78rem' }}>{errors.phone}</span>}
                   </div>
                 </div>
 

@@ -41,22 +41,24 @@ export const AchievementsSection = () => {
   return (
     <section ref={sectionRef} style={{
       padding: '70px 0',
-      background: 'linear-gradient(135deg, #07172C 0%, #0B2545 100%)',
+      background: 'linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%)',
       color: '#FFFFFF',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      borderTop: '1px solid rgba(249, 115, 22, 0.25)',
+      borderBottom: '1px solid rgba(249, 115, 22, 0.25)'
     }}>
       <div className="container">
         
         <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-          <span className="section-badge blue" style={{ background: 'rgba(0, 166, 251, 0.15)', color: 'var(--color-cyan-400)' }}>
-            <Sparkles size={14} />
+          <span className="section-badge" style={{ background: 'rgba(234, 88, 12, 0.2)', color: 'var(--color-orange-400)', border: '1px solid rgba(249, 115, 22, 0.4)' }}>
+            <Sparkles size={14} color="var(--color-orange-400)" />
             OUR TRACK RECORD & IMPACT
           </span>
           <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.7rem)', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em', marginTop: '8px' }}>
             PROVEN ACHIEVEMENTS ACROSS SPACES
           </h2>
-          <p style={{ color: '#94A3B8', fontSize: '1.05rem', maxWidth: '600px', margin: '8px auto 0 auto' }}>
+          <p style={{ color: '#E7D7C8', fontSize: '1.05rem', maxWidth: '600px', margin: '8px auto 0 auto' }}>
             Trusted by residential families, property managers, and top educational directors.
           </p>
         </div>
@@ -71,7 +73,7 @@ export const AchievementsSection = () => {
           {/* Stat 1: Houses Cleaned */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(249, 115, 22, 0.2)',
             borderRadius: '20px',
             padding: '32px 20px',
             textAlign: 'center',
@@ -83,8 +85,8 @@ export const AchievementsSection = () => {
               width: '56px',
               height: '56px',
               borderRadius: '16px',
-              background: 'rgba(0, 166, 251, 0.2)',
-              color: 'var(--color-cyan-400)',
+              background: 'rgba(234, 88, 12, 0.25)',
+              color: 'var(--color-orange-400)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -102,10 +104,10 @@ export const AchievementsSection = () => {
             }}>
               {houseCount}+
             </div>
-            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-cyan-400)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-orange-400)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               HOUSES CLEANED
             </div>
-            <p style={{ fontSize: '0.82rem', color: '#94A3B8', marginTop: '4px' }}>
+            <p style={{ fontSize: '0.82rem', color: '#D6D3D1', marginTop: '4px' }}>
               Apartments, villas, and independent homes deep cleaned
             </p>
           </div>
@@ -113,7 +115,7 @@ export const AchievementsSection = () => {
           {/* Stat 2: College Campuses Cleaned */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(249, 115, 22, 0.2)',
             borderRadius: '20px',
             padding: '32px 20px',
             textAlign: 'center',
@@ -125,8 +127,8 @@ export const AchievementsSection = () => {
               width: '56px',
               height: '56px',
               borderRadius: '16px',
-              background: 'rgba(16, 185, 129, 0.2)',
-              color: 'var(--color-green-400)',
+              background: 'rgba(249, 115, 22, 0.25)',
+              color: 'var(--color-orange-400)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -144,10 +146,10 @@ export const AchievementsSection = () => {
             }}>
               {campusCount}+
             </div>
-            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-green-400)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-orange-400)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               COLLEGE CAMPUSES
             </div>
-            <p style={{ fontSize: '0.82rem', color: '#94A3B8', marginTop: '4px' }}>
+            <p style={{ fontSize: '0.82rem', color: '#D6D3D1', marginTop: '4px' }}>
               Institutional scale lecture halls & campus corridors
             </p>
           </div>
@@ -155,7 +157,7 @@ export const AchievementsSection = () => {
           {/* Stat 3: Satisfaction */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(249, 115, 22, 0.2)',
             borderRadius: '20px',
             padding: '32px 20px',
             textAlign: 'center',
@@ -167,8 +169,8 @@ export const AchievementsSection = () => {
               width: '56px',
               height: '56px',
               borderRadius: '16px',
-              background: 'rgba(245, 158, 11, 0.2)',
-              color: 'var(--color-festive-gold)',
+              background: 'rgba(245, 158, 11, 0.25)',
+              color: '#FBBF24',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -186,10 +188,10 @@ export const AchievementsSection = () => {
             }}>
               {siteConfig.statistics.satisfactionRate}
             </div>
-            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-festive-gold)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: '#FBBF24', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               CLIENT SATISFACTION
             </div>
-            <p style={{ fontSize: '0.82rem', color: '#94A3B8', marginTop: '4px' }}>
+            <p style={{ fontSize: '0.82rem', color: '#D6D3D1', marginTop: '4px' }}>
               Rated across post-service customer feedback surveys
             </p>
           </div>
@@ -197,7 +199,7 @@ export const AchievementsSection = () => {
           {/* Stat 4: Trained Crew */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(249, 115, 22, 0.2)',
             borderRadius: '20px',
             padding: '32px 20px',
             textAlign: 'center',
@@ -209,8 +211,8 @@ export const AchievementsSection = () => {
               width: '56px',
               height: '56px',
               borderRadius: '16px',
-              background: 'rgba(0, 166, 251, 0.2)',
-              color: 'var(--color-cyan-400)',
+              background: 'rgba(234, 88, 12, 0.25)',
+              color: 'var(--color-orange-400)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -228,10 +230,10 @@ export const AchievementsSection = () => {
             }}>
               {siteConfig.statistics.trainedCrew}
             </div>
-            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-cyan-400)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--color-orange-400)', marginTop: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               VERIFIED PROFESSIONALS
             </div>
-            <p style={{ fontSize: '0.82rem', color: '#94A3B8', marginTop: '4px' }}>
+            <p style={{ fontSize: '0.82rem', color: '#D6D3D1', marginTop: '4px' }}>
               Background checked and platform certified teams
             </p>
           </div>

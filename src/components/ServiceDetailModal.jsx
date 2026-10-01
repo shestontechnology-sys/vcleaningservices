@@ -63,7 +63,7 @@ export const ServiceDetailModal = ({ service, onClose, onOpenBooking, onOpenQuot
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(7, 23, 44, 0.9) 0%, rgba(7, 23, 44, 0.4) 60%, transparent 100%)',
+            background: 'linear-gradient(to top, rgba(28, 25, 23, 0.9) 0%, rgba(28, 25, 23, 0.4) 60%, transparent 100%)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',

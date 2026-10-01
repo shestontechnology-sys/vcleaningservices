@@ -162,7 +162,7 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
         {/* Header Bar with Step Progress */}
         <div style={{
           padding: '20px 24px',
-          background: 'linear-gradient(135deg, #0B2545 0%, #134074 100%)',
+          background: 'linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%)',
           color: '#FFFFFF',
           position: 'relative'
         }}>
@@ -189,8 +189,8 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
           </button>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-            <Sparkles size={16} color="var(--color-cyan-400)" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-cyan-400)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            <Sparkles size={16} color="var(--color-orange-400)" />
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-orange-400)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               V CLEANING SERVICES — STEP {step} OF 8
             </span>
           </div>
@@ -219,7 +219,7 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                   height: '4px',
                   flex: 1,
                   borderRadius: '2px',
-                  background: s <= step ? 'var(--color-green-400)' : 'rgba(255, 255, 255, 0.25)',
+                  background: s <= step ? 'var(--color-orange-500)' : 'rgba(255, 255, 255, 0.25)',
                   transition: 'background 200ms ease'
                 }}
               />
