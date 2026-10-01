@@ -25,21 +25,21 @@ export const BrandLogo = ({ size = 'normal', light = false }) => {
     <div style={{ 
       display: 'inline-flex', 
       alignItems: 'center', 
-      gap: '12px', 
+      gap: '10px', 
       cursor: 'pointer',
       userSelect: 'none',
       flexShrink: 0
     }}>
       <div style={{
-        width: isLarge ? '52px' : '46px',
-        height: isLarge ? '52px' : '46px',
+        width: isLarge ? '48px' : '42px',
+        height: isLarge ? '48px' : '42px',
         borderRadius: '50%',
         background: '#FFFFFF',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 4px 14px rgba(234, 88, 12, 0.28)',
-        border: '2.5px solid #EA580C',
+        boxShadow: '0 3px 10px rgba(234, 88, 12, 0.25)',
+        border: '2px solid #EA580C',
         position: 'relative',
         flexShrink: 0,
         overflow: 'hidden',
@@ -60,7 +60,7 @@ export const BrandLogo = ({ size = 'normal', light = false }) => {
         <div style={{ 
           fontFamily: 'var(--font-heading)',
           fontWeight: 800, 
-          fontSize: isLarge ? '1.35rem' : '1.18rem', 
+          fontSize: isLarge ? '1.28rem' : '1.1rem', 
           color: light ? '#FFFFFF' : 'var(--color-navy-900)',
           letterSpacing: '-0.025em',
           lineHeight: 1.15,
@@ -69,7 +69,7 @@ export const BrandLogo = ({ size = 'normal', light = false }) => {
           V CLEANING <span style={{ color: 'var(--color-orange-500)' }}>SERVICES</span>
         </div>
         <div style={{ 
-          fontSize: isLarge ? '0.74rem' : '0.68rem', 
+          fontSize: isLarge ? '0.7rem' : '0.64rem', 
           fontWeight: 700, 
           color: light ? 'rgba(255, 255, 255, 0.9)' : 'var(--color-orange-700)',
           letterSpacing: '0.04em',
@@ -162,21 +162,25 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
         WebkitBackdropFilter: 'blur(16px)',
         boxShadow: isScrolled ? '0 4px 20px rgba(124, 45, 18, 0.08)' : '0 1px 3px rgba(124, 45, 18, 0.04)',
         borderBottom: '1px solid var(--color-border-light)',
-        padding: isScrolled ? '10px 0' : '14px 0'
+        padding: isScrolled ? '8px 0' : '10px 0'
       }}
     >
-      <div className="container" style={{ 
+      <div style={{ 
+        width: '100%',
+        maxWidth: '1480px',
+        margin: '0 auto',
+        padding: '0 20px',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'space-between',
-        gap: '16px'
+        gap: '12px'
       }}>
         
         {/* 1. Left: Brand Logo */}
         <a 
           href="#hero" 
           onClick={(e) => handleNavClick(e, { href: '#hero' })} 
-          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}
           aria-label="V Cleaning Services Home"
         >
           <BrandLogo size="normal" />
@@ -218,7 +222,7 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '10px',
+          gap: '8px',
           flexShrink: 0
         }}>
           {/* Quick email pill link on wide screens */}
@@ -227,28 +231,14 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
             className="desktop-email-pill"
             title={`Send email to ${siteConfig.brand.email}`}
           >
-            <Mail size={15} color="var(--color-orange-500)" style={{ flexShrink: 0 }} />
-            <span style={{ whiteSpace: 'nowrap', fontWeight: 600 }}>
-              {siteConfig.brand.email}
-            </span>
+            <Mail size={14} color="var(--color-orange-500)" style={{ flexShrink: 0 }} />
+            <span>{siteConfig.brand.email}</span>
           </a>
 
           {/* Primary Book Now CTA */}
           <button
             onClick={() => onOpenBooking()}
             className="btn btn-primary nav-book-btn"
-            style={{ 
-              fontWeight: 700, 
-              letterSpacing: '0.02em',
-              whiteSpace: 'nowrap',
-              height: '40px',
-              padding: '0 18px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '7px',
-              fontSize: '0.9rem'
-            }}
           >
             <Calendar size={15} style={{ flexShrink: 0 }} />
             <span>BOOK NOW</span>
@@ -334,14 +324,14 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
         .desktop-nav-box {
           display: none;
           align-items: center;
-          gap: 3px;
+          gap: 2px;
           margin: 0 auto;
-          background: rgba(255, 247, 237, 0.85);
+          background: rgba(255, 247, 237, 0.9);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(253, 186, 116, 0.7);
           border-radius: 9999px;
-          padding: 4px 6px;
+          padding: 3px 5px;
           box-shadow: 0 2px 8px rgba(124, 45, 18, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
           transition: all 200ms ease;
         }
@@ -356,10 +346,10 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 5px;
-          height: 34px;
-          padding: 0 11px;
-          font-size: 0.86rem;
+          gap: 4px;
+          height: 32px;
+          padding: 0 9px;
+          font-size: 0.83rem;
           font-weight: 600;
           color: var(--color-navy-900);
           text-decoration: none;
@@ -388,7 +378,7 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           color: #9A3412 !important;
           background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
           border: 1px solid #FDBA74;
-          padding: 0 11px;
+          padding: 0 9px;
           font-weight: 700;
           box-shadow: 0 1px 3px rgba(234, 88, 12, 0.12);
         }
@@ -403,12 +393,12 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
         .desktop-email-pill {
           display: none;
           align-items: center;
-          gap: 8px;
-          font-size: 0.84rem;
+          gap: 6px;
+          font-size: 0.81rem;
           font-weight: 600;
           color: var(--color-navy-900);
-          padding: 0 14px;
-          height: 38px;
+          padding: 0 11px;
+          height: 36px;
           border-radius: var(--radius-md);
           background: var(--color-bg-subtle);
           border: 1px solid var(--color-border-light);
@@ -425,12 +415,31 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           box-shadow: 0 2px 8px rgba(234, 88, 12, 0.15);
         }
 
+        .nav-book-btn {
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+          height: 36px;
+          padding: 0 16px !important;
+          display: inline-flex !important;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          font-size: 0.84rem;
+          flex-shrink: 0;
+        }
+
+        .nav-book-btn span {
+          display: inline !important;
+          white-space: nowrap;
+        }
+
         .mobile-menu-btn {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 40px;
-          height: 40px;
+          width: 38px;
+          height: 38px;
           border-radius: var(--radius-md);
           border: 1px solid var(--color-border-light);
           background: var(--color-bg-surface);
@@ -446,7 +455,7 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           color: var(--color-orange-600);
         }
 
-        /* Desktop Breakpoints */
+        /* Breakpoints */
         @media (min-width: 1040px) {
           .desktop-nav-box {
             display: inline-flex !important;
@@ -456,17 +465,9 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           }
         }
 
-        @media (min-width: 1240px) {
+        @media (min-width: 1200px) {
           .desktop-email-pill {
             display: inline-flex !important;
-          }
-          .nav-box-pill {
-            padding: 0 12px;
-            font-size: 0.86rem;
-          }
-          .desktop-nav-box {
-            gap: 3px;
-            padding: 4px 6px;
           }
         }
 
@@ -475,13 +476,10 @@ export const Header = ({ onOpenBooking, onOpenQuote, onOpenOffers, onOpenAbout }
           .brand-tagline {
             display: none;
           }
-          .nav-book-btn span {
-            display: inline;
-          }
           .nav-book-btn {
             padding: 0 12px !important;
-            font-size: 0.82rem !important;
-            height: 36px !important;
+            font-size: 0.8rem !important;
+            height: 34px !important;
           }
         }
 
