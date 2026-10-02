@@ -1,23 +1,19 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   X, 
   Check, 
   ChevronRight, 
   ChevronLeft, 
-  Calendar as CalendarIcon, 
   Clock, 
   Home, 
   Building2, 
   CheckCircle2, 
   Sparkles, 
-  ShieldCheck, 
   Tag, 
   ArrowRight,
-  User,
-  Phone,
-  Mail,
-  MapPin,
-  MessageSquare
+  ShieldCheck,
+  DoorOpen,
+  Armchair
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 
@@ -27,10 +23,10 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
   // Form State
   const [selectedServiceId, setSelectedServiceId] = useState(initialServiceId || 'full-home-cleaning');
   const [selectedPropertyType, setSelectedPropertyType] = useState('apartment');
+  const [selectedOccupancy, setSelectedOccupancy] = useState('empty'); // 'empty' or 'occupied'
   const [selectedSize, setSelectedSize] = useState('2bhk');
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [selectedDate, setSelectedDate] = useState(() => {
-    // Tomorrow as default
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tomorrow.toISOString().split('T')[0];
@@ -51,38 +47,84 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
 
   const [formErrors, setFormErrors] = useState({});
 
-  // Detect if commercial or residential based on property type or service
+  // Sync property type / size when service changes
+  useEffect(() => {
+    if (selectedServiceId === 'villa-deep-cleaning') {
+      setSelectedPropertyType('villa');
+      if (!selectedSize.startsWith('villa-')) setSelectedSize('villa-2');
+    } else if (selectedServiceId === 'heavy-stains-cleaning') {
+      setSelectedPropertyType('heavy-stains-home');
+      if (!selectedSize.startsWith('stain-')) setSelectedSize('stain-2');
+    } else if (selectedServiceId === 'commercial-property-cleaning' || selectedServiceId === 'college-campus-cleaning') {
+      setSelectedPropertyType('office');
+      if (!selectedSize.startsWith('comm-')) setSelectedSize('comm-med');
+    } else if (selectedServiceId === 'full-home-cleaning') {
+      if (selectedPropertyType !== 'apartment' && selectedPropertyType !== 'villa' && selectedPropertyType !== 'heavy-stains-home') {
+        setSelectedPropertyType('apartment');
+      }
+    }
+  }, [selectedServiceId]);
+
+  // Adjust size selection if property type changes
+  const handlePropertyTypeChange = (propId) => {
+    setSelectedPropertyType(propId);
+    if (propId === 'apartment') {
+      setSelectedSize('2bhk');
+    } else if (propId === 'villa') {
+      setSelectedSize('villa-2');
+    } else if (propId === 'heavy-stains-home') {
+      setSelectedSize('stain-2');
+    } else {
+      setSelectedSize('comm-med');
+    }
+  };
+
+  // Detect commercial vs residential
   const isCommercial = useMemo(() => {
     return ['office', 'shop', 'commercial-building', 'college-institution'].includes(selectedPropertyType) ||
            ['commercial-property-cleaning', 'college-campus-cleaning'].includes(selectedServiceId);
   }, [selectedPropertyType, selectedServiceId]);
 
-  // Dynamic Price Calculation
+  const isVilla = selectedPropertyType === 'villa' || selectedServiceId === 'villa-deep-cleaning';
+  const isHeavyStains = selectedPropertyType === 'heavy-stains-home' || selectedServiceId === 'heavy-stains-cleaning';
+  const isApartment = !isCommercial && !isVilla && !isHeavyStains;
+
+  // Exact Dynamic Price Calculation from Handwritten Rate Cards
   const priceEstimate = useMemo(() => {
-    let base = 2499;
+    let base = 4000;
     const currentService = siteConfig.services.find(s => s.id === selectedServiceId);
-    
-    // Size base
-    if (!isCommercial) {
-      const sizeObj = siteConfig.pricingMatrix.sizes.residential.find(s => s.id === selectedSize);
-      if (sizeObj) base = sizeObj.basePrice;
+    let pricingBreakdownText = '';
+
+    if (isApartment) {
+      const aptObj = siteConfig.pricingMatrix.apartmentPricing.find(s => s.id === selectedSize) || siteConfig.pricingMatrix.apartmentPricing[1];
+      base = selectedOccupancy === 'empty' ? aptObj.emptyPrice : aptObj.occupiedPrice;
+      pricingBreakdownText = `${aptObj.name} (${selectedOccupancy === 'empty' ? 'Empty' : 'Occupied'})`;
+    } else if (isVilla) {
+      const villaObj = siteConfig.pricingMatrix.villaPricing.find(s => s.id === selectedSize) || siteConfig.pricingMatrix.villaPricing[1];
+      base = selectedOccupancy === 'empty' ? villaObj.emptyPrice : villaObj.occupiedPrice;
+      pricingBreakdownText = `Villa ${villaObj.sqftRange} (${selectedOccupancy === 'empty' ? 'Empty' : 'Occupied'})`;
+    } else if (isHeavyStains) {
+      const stainObj = siteConfig.pricingMatrix.heavyStainsPricing.find(s => s.id === selectedSize) || siteConfig.pricingMatrix.heavyStainsPricing[1];
+      base = stainObj.price;
+      pricingBreakdownText = `Heavy Stains Removal - ${stainObj.name}`;
+    } else if (isCommercial) {
+      const commObj = siteConfig.pricingMatrix.sizes.commercial.find(s => s.id === selectedSize) || siteConfig.pricingMatrix.sizes.commercial[1];
+      base = commObj.basePrice;
+      pricingBreakdownText = `Commercial - ${commObj.name}`;
     } else {
-      const sizeObj = siteConfig.pricingMatrix.sizes.commercial.find(s => s.id === selectedSize) || siteConfig.pricingMatrix.sizes.commercial[0];
-      if (sizeObj) base = sizeObj.basePrice;
+      base = 4000;
     }
 
-    // Property multiplier
-    const propObj = siteConfig.pricingMatrix.propertyTypes.find(p => p.id === selectedPropertyType);
-    const multiplier = propObj ? propObj.multiplier : 1.0;
-    let subtotal = base * multiplier;
-
-    // Service specific baseline adjustment
+    // Specific single room baseline adjustments if user chose specific non-home services
     if (selectedServiceId === 'bathroom-deep-cleaning') {
-      subtotal = 599 * 2; // Default 2 bathrooms
+      base = 599 * 2; // Default 2 bathrooms package
+      pricingBreakdownText = 'Bathroom Deep Descaling (2 Bathrooms)';
     } else if (selectedServiceId === 'kitchen-deep-cleaning') {
-      subtotal = 1299;
+      base = 1299;
+      pricingBreakdownText = 'Kitchen Deep Cleaning Standard';
     } else if (selectedServiceId === 'sofa-upholstery-cleaning') {
-      subtotal = 1199;
+      base = 1299;
+      pricingBreakdownText = 'Sofa Shampooing (5 Seater / L-Shape)';
     }
 
     // Add-ons
@@ -92,17 +134,20 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
       if (addon) addOnsTotal += addon.price;
     });
 
-    const rawTotal = Math.round(subtotal + addOnsTotal);
+    const rawTotal = Math.round(base + addOnsTotal);
     const discountAmount = promoApplied ? Math.round(rawTotal * 0.15) : 0; // 15% festive offer
     const finalTotal = rawTotal - discountAmount;
 
     return {
+      base,
+      addOnsTotal,
       rawTotal,
       discountAmount,
       finalTotal,
+      pricingBreakdownText,
       serviceTitle: currentService ? currentService.title : 'Deep Cleaning'
     };
-  }, [selectedServiceId, selectedPropertyType, selectedSize, selectedAddOns, promoApplied, isCommercial]);
+  }, [selectedServiceId, selectedPropertyType, selectedOccupancy, selectedSize, selectedAddOns, promoApplied, isCommercial, isVilla, isHeavyStains, isApartment]);
 
   // Validation
   const validateStep7 = () => {
@@ -140,7 +185,9 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
       serviceId: selectedServiceId,
       serviceTitle: priceEstimate.serviceTitle,
       propertyType: selectedPropertyType,
+      occupancyStatus: selectedOccupancy,
       size: selectedSize,
+      pricingDetails: priceEstimate.pricingBreakdownText,
       addOns: selectedAddOns.map(id => siteConfig.pricingMatrix.addOns.find(a => a.id === id)?.name),
       date: selectedDate,
       timeSlot: selectedTimeSlot,
@@ -149,7 +196,9 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
       promoApplied: promoApplied ? promoCode : null
     };
 
-    onBookingSuccess(bookingSummary);
+    if (onBookingSuccess) {
+      onBookingSuccess(bookingSummary);
+    }
   };
 
   return (
@@ -159,20 +208,43 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
         onClick={(e) => e.stopPropagation()}
         style={{ maxWidth: '840px', padding: 0 }}
       >
-        {/* Header Bar with Step Progress */}
+        {/* Modal Header */}
         <div style={{
           padding: '20px 24px',
           background: 'linear-gradient(135deg, #1C1917 0%, #292524 50%, #431407 100%)',
           color: '#FFFFFF',
-          position: 'relative'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderTopLeftRadius: 'var(--radius-xl)',
+          borderTopRightRadius: 'var(--radius-xl)'
         }}>
-          <button
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <span className="section-badge" style={{ margin: 0, padding: '3px 10px', fontSize: '0.74rem' }}>
+                <Sparkles size={12} color="var(--color-orange-600)" />
+                ONLINE BOOKING ENGINE
+              </span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--color-orange-300)' }}>
+                Step {step} of 8
+              </span>
+            </div>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF' }}>
+              {step === 1 && "Select Deep Cleaning Service"}
+              {step === 2 && "Select Property Type"}
+              {step === 3 && "Select Property Size & Occupancy"}
+              {step === 4 && "Select Specialized Add-Ons"}
+              {step === 5 && "Choose Service Date"}
+              {step === 6 && "Select Arrival Time Slot"}
+              {step === 7 && "Contact & Location Details"}
+              {step === 8 && "Review & Confirm Booking"}
+            </h2>
+          </div>
+
+          <button 
             onClick={onClose}
             aria-label="Close booking modal"
             style={{
-              position: 'absolute',
-              top: '18px',
-              right: '18px',
               background: 'rgba(255, 255, 255, 0.15)',
               border: 'none',
               borderRadius: '50%',
@@ -182,59 +254,32 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
               alignItems: 'center',
               justifyContent: 'center',
               color: '#FFFFFF',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              transition: 'background var(--transition-fast)'
             }}
           >
             <X size={18} />
           </button>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-            <Sparkles size={16} color="var(--color-orange-400)" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-orange-400)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              V CLEANING SERVICES — STEP {step} OF 8
-            </span>
-          </div>
-          
-          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#FFFFFF' }}>
-            {step === 1 && 'Step 1: Choose Your Cleaning Service'}
-            {step === 2 && 'Step 2: Select Property Type'}
-            {step === 3 && 'Step 3: Select Property Size / Configuration'}
-            {step === 4 && 'Step 4: Select Customized Add-on Requirements'}
-            {step === 5 && 'Step 5: Select Preferred Service Date'}
-            {step === 6 && 'Step 6: Choose Preferred Arrival Time Slot'}
-            {step === 7 && 'Step 7: Enter Contact & Service Location'}
-            {step === 8 && 'Step 8: Review & Confirm Booking Request'}
-          </h2>
-
-          {/* Step Progress Bar */}
-          <div style={{
-            display: 'flex',
-            gap: '4px',
-            marginTop: '14px'
-          }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map(s => (
-              <div 
-                key={s} 
-                style={{
-                  height: '4px',
-                  flex: 1,
-                  borderRadius: '2px',
-                  background: s <= step ? 'var(--color-orange-500)' : 'rgba(255, 255, 255, 0.25)',
-                  transition: 'background 200ms ease'
-                }}
-              />
-            ))}
-          </div>
         </div>
 
-        {/* Modal Body: Render Current Step */}
-        <div style={{ padding: '28px 24px', minHeight: '380px' }}>
+        {/* Progress Bar */}
+        <div style={{ height: '4px', background: '#E2E8F0', width: '100%' }}>
+          <div style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #EA580C 0%, #F97316 100%)',
+            width: `${(step / 8) * 100}%`,
+            transition: 'width 300ms ease'
+          }} />
+        </div>
+
+        {/* Modal Body */}
+        <div style={{ padding: '24px', maxHeight: '62vh', overflowY: 'auto' }}>
           
           {/* STEP 1: SELECT SERVICE */}
           {step === 1 && (
             <div>
               <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', marginBottom: '20px' }}>
-                Select the core cleaning service you require for your space:
+                Select the primary deep cleaning solution you require:
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '14px' }}>
                 {siteConfig.services.map(srv => {
@@ -246,28 +291,28 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                       style={{
                         padding: '16px',
                         borderRadius: '14px',
-                        border: isSelected ? '2px solid var(--color-cyan-500)' : '1.5px solid var(--color-border-light)',
-                        background: isSelected ? '#F0F9FF' : '#FFFFFF',
+                        border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                        background: isSelected ? '#FFF7ED' : '#FFFFFF',
                         cursor: 'pointer',
                         transition: 'all var(--transition-fast)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
-                        boxShadow: isSelected ? '0 4px 12px rgba(0, 166, 251, 0.15)' : 'none'
+                        boxShadow: isSelected ? '0 4px 12px rgba(234, 88, 12, 0.15)' : 'none'
                       }}
                     >
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                          <span style={{ fontSize: '0.96rem', fontWeight: 800, color: isSelected ? 'var(--color-royal-600)' : 'var(--color-navy-800)' }}>
+                          <span style={{ fontSize: '0.92rem', fontWeight: 800, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
                             {srv.title}
                           </span>
-                          {isSelected && <CheckCircle2 size={18} color="var(--color-cyan-500)" />}
+                          {isSelected && <CheckCircle2 size={18} color="var(--color-orange-600)" />}
                         </div>
-                        <p style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', lineHeight: 1.4 }}>
+                        <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', lineHeight: 1.4 }}>
                           {srv.shortDescription}
                         </p>
                       </div>
-                      <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-green-600)', marginTop: '12px' }}>
+                      <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-orange-600)', marginTop: '12px' }}>
                         {srv.pricingNote.split('(')[0]}
                       </div>
                     </div>
@@ -283,18 +328,18 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
               <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', marginBottom: '20px' }}>
                 What type of premises needs professional cleaning?
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '14px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '14px' }}>
                 {siteConfig.pricingMatrix.propertyTypes.map(prop => {
                   const isSelected = selectedPropertyType === prop.id;
                   return (
                     <div
                       key={prop.id}
-                      onClick={() => setSelectedPropertyType(prop.id)}
+                      onClick={() => handlePropertyTypeChange(prop.id)}
                       style={{
                         padding: '18px 16px',
                         borderRadius: '14px',
-                        border: isSelected ? '2px solid var(--color-cyan-500)' : '1.5px solid var(--color-border-light)',
-                        background: isSelected ? '#F0F9FF' : '#FFFFFF',
+                        border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                        background: isSelected ? '#FFF7ED' : '#FFFFFF',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -304,15 +349,17 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         {['office', 'shop', 'commercial-building', 'college-institution'].includes(prop.id) ? (
-                          <Building2 size={20} color={isSelected ? 'var(--color-royal-600)' : 'var(--color-text-light)'} />
+                          <Building2 size={20} color={isSelected ? 'var(--color-orange-600)' : 'var(--color-text-light)'} />
+                        ) : prop.id === 'heavy-stains-home' ? (
+                          <Sparkles size={20} color={isSelected ? 'var(--color-orange-600)' : 'var(--color-text-light)'} />
                         ) : (
-                          <Home size={20} color={isSelected ? 'var(--color-royal-600)' : 'var(--color-text-light)'} />
+                          <Home size={20} color={isSelected ? 'var(--color-orange-600)' : 'var(--color-text-light)'} />
                         )}
-                        <span style={{ fontSize: '0.95rem', fontWeight: 700, color: isSelected ? 'var(--color-royal-600)' : 'var(--color-navy-800)' }}>
+                        <span style={{ fontSize: '0.92rem', fontWeight: 700, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
                           {prop.name}
                         </span>
                       </div>
-                      {isSelected && <CheckCircle2 size={18} color="var(--color-cyan-500)" />}
+                      {isSelected && <CheckCircle2 size={18} color="var(--color-orange-600)" />}
                     </div>
                   );
                 })}
@@ -320,25 +367,93 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
             </div>
           )}
 
-          {/* STEP 3: SELECT SIZE */}
+          {/* STEP 3: SELECT SIZE & OCCUPANCY */}
           {step === 3 && (
             <div>
-              <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', marginBottom: '20px' }}>
-                Select the size / bedroom configuration of your space:
+              {/* Occupancy Toggle for Residential (Empty vs Occupied) */}
+              {!isCommercial && !isHeavyStains && (
+                <div style={{
+                  marginBottom: '24px',
+                  padding: '16px 20px',
+                  background: '#FFF7ED',
+                  borderRadius: '14px',
+                  border: '1px solid var(--color-orange-200)'
+                }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-orange-950)', marginBottom: '10px' }}>
+                    Select Property Furnishing / Occupancy Status:
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOccupancy('empty')}
+                      style={{
+                        padding: '12px 16px',
+                        borderRadius: '10px',
+                        border: selectedOccupancy === 'empty' ? '2px solid var(--color-orange-600)' : '1px solid var(--color-border-light)',
+                        background: selectedOccupancy === 'empty' ? '#FFFFFF' : 'rgba(255,255,255,0.6)',
+                        color: selectedOccupancy === 'empty' ? 'var(--color-orange-700)' : 'var(--color-navy-800)',
+                        fontWeight: 700,
+                        fontSize: '0.9rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        boxShadow: selectedOccupancy === 'empty' ? 'var(--shadow-sm)' : 'none'
+                      }}
+                    >
+                      <DoorOpen size={18} color={selectedOccupancy === 'empty' ? 'var(--color-orange-600)' : 'var(--color-text-muted)'} />
+                      <span>Empty / Vacant Home</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOccupancy('occupied')}
+                      style={{
+                        padding: '12px 16px',
+                        borderRadius: '10px',
+                        border: selectedOccupancy === 'occupied' ? '2px solid var(--color-orange-600)' : '1px solid var(--color-border-light)',
+                        background: selectedOccupancy === 'occupied' ? '#FFFFFF' : 'rgba(255,255,255,0.6)',
+                        color: selectedOccupancy === 'occupied' ? 'var(--color-orange-700)' : 'var(--color-navy-800)',
+                        fontWeight: 700,
+                        fontSize: '0.9rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        boxShadow: selectedOccupancy === 'occupied' ? 'var(--shadow-sm)' : 'none'
+                      }}
+                    >
+                      <Armchair size={18} color={selectedOccupancy === 'occupied' ? 'var(--color-orange-600)' : 'var(--color-text-muted)'} />
+                      <span>Occupied / Furnished</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', marginBottom: '16px' }}>
+                {isApartment && "Select your Apartment BHK size:"}
+                {isVilla && "Select your Villa / Plot square feet tier:"}
+                {isHeavyStains && "Select your property size for Sticker Marks & Heavy Stains deep treatment:"}
+                {isCommercial && "Select your commercial area size:"}
               </p>
+
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '14px' }}>
-                {!isCommercial ? (
-                  siteConfig.pricingMatrix.sizes.residential.map(s => {
+                {/* APARTMENT RATES */}
+                {isApartment && (
+                  siteConfig.pricingMatrix.apartmentPricing.map(s => {
                     const isSelected = selectedSize === s.id;
+                    const price = selectedOccupancy === 'empty' ? s.emptyPrice : s.occupiedPrice;
                     return (
                       <div
                         key={s.id}
                         onClick={() => setSelectedSize(s.id)}
                         style={{
-                          padding: '18px',
+                          padding: '16px',
                           borderRadius: '14px',
-                          border: isSelected ? '2px solid var(--color-cyan-500)' : '1.5px solid var(--color-border-light)',
-                          background: isSelected ? '#F0F9FF' : '#FFFFFF',
+                          border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                          background: isSelected ? '#FFF7ED' : '#FFFFFF',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
@@ -346,18 +461,97 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                         }}
                       >
                         <div>
-                          <div style={{ fontSize: '1.05rem', fontWeight: 800, color: isSelected ? 'var(--color-royal-600)' : 'var(--color-navy-800)' }}>
+                          <div style={{ fontSize: '1.02rem', fontWeight: 800, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
                             {s.name}
                           </div>
-                          <div style={{ fontSize: '0.82rem', color: 'var(--color-text-light)', marginTop: '2px' }}>
-                            Approx: {s.sqftRange}
+                          <div style={{ fontSize: '0.78rem', color: 'var(--color-text-light)', marginTop: '2px' }}>
+                            {s.sqftRange}
+                          </div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-orange-600)', marginTop: '6px' }}>
+                            ₹{price.toLocaleString('en-IN')} <span style={{ fontSize: '0.74rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>({selectedOccupancy})</span>
                           </div>
                         </div>
-                        {isSelected && <CheckCircle2 size={20} color="var(--color-cyan-500)" />}
+                        {isSelected && <CheckCircle2 size={20} color="var(--color-orange-600)" />}
                       </div>
                     );
                   })
-                ) : (
+                )}
+
+                {/* VILLA RATES */}
+                {isVilla && (
+                  siteConfig.pricingMatrix.villaPricing.map(s => {
+                    const isSelected = selectedSize === s.id;
+                    const price = selectedOccupancy === 'empty' ? s.emptyPrice : s.occupiedPrice;
+                    return (
+                      <div
+                        key={s.id}
+                        onClick={() => setSelectedSize(s.id)}
+                        style={{
+                          padding: '16px',
+                          borderRadius: '14px',
+                          border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                          background: isSelected ? '#FFF7ED' : '#FFFFFF',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between'
+                        }}
+                      >
+                        <div>
+                          <div style={{ fontSize: '0.98rem', fontWeight: 800, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
+                            {s.name}
+                          </div>
+                          <div style={{ fontSize: '0.78rem', color: 'var(--color-text-light)', marginTop: '2px' }}>
+                            {s.sqftRange}
+                          </div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-orange-600)', marginTop: '6px' }}>
+                            ₹{price.toLocaleString('en-IN')} <span style={{ fontSize: '0.74rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>({selectedOccupancy})</span>
+                          </div>
+                        </div>
+                        {isSelected && <CheckCircle2 size={20} color="var(--color-orange-600)" />}
+                      </div>
+                    );
+                  })
+                )}
+
+                {/* HEAVY STAINS RATES */}
+                {isHeavyStains && (
+                  siteConfig.pricingMatrix.heavyStainsPricing.map(s => {
+                    const isSelected = selectedSize === s.id;
+                    return (
+                      <div
+                        key={s.id}
+                        onClick={() => setSelectedSize(s.id)}
+                        style={{
+                          padding: '16px',
+                          borderRadius: '14px',
+                          border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                          background: isSelected ? '#FFF7ED' : '#FFFFFF',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between'
+                        }}
+                      >
+                        <div>
+                          <div style={{ fontSize: '0.98rem', fontWeight: 800, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
+                            {s.name}
+                          </div>
+                          <div style={{ fontSize: '0.78rem', color: 'var(--color-text-light)', marginTop: '2px' }}>
+                            {s.sqftRange}
+                          </div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-orange-600)', marginTop: '6px' }}>
+                            ₹{s.price.toLocaleString('en-IN')}
+                          </div>
+                        </div>
+                        {isSelected && <CheckCircle2 size={20} color="var(--color-orange-600)" />}
+                      </div>
+                    );
+                  })
+                )}
+
+                {/* COMMERCIAL RATES */}
+                {isCommercial && (
                   siteConfig.pricingMatrix.sizes.commercial.map(s => {
                     const isSelected = selectedSize === s.id;
                     return (
@@ -365,20 +559,25 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                         key={s.id}
                         onClick={() => setSelectedSize(s.id)}
                         style={{
-                          padding: '18px',
+                          padding: '16px',
                           borderRadius: '14px',
-                          border: isSelected ? '2px solid var(--color-cyan-500)' : '1.5px solid var(--color-border-light)',
-                          background: isSelected ? '#F0F9FF' : '#FFFFFF',
+                          border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                          background: isSelected ? '#FFF7ED' : '#FFFFFF',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between'
                         }}
                       >
-                        <div style={{ fontSize: '1rem', fontWeight: 800, color: isSelected ? 'var(--color-royal-600)' : 'var(--color-navy-800)' }}>
-                          {s.name}
+                        <div>
+                          <div style={{ fontSize: '0.98rem', fontWeight: 800, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
+                            {s.name}
+                          </div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-orange-600)', marginTop: '6px' }}>
+                            ₹{s.basePrice.toLocaleString('en-IN')}
+                          </div>
                         </div>
-                        {isSelected && <CheckCircle2 size={20} color="var(--color-cyan-500)" />}
+                        {isSelected && <CheckCircle2 size={20} color="var(--color-orange-600)" />}
                       </div>
                     );
                   })
@@ -403,8 +602,8 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                       style={{
                         padding: '14px 16px',
                         borderRadius: '12px',
-                        border: isChecked ? '1.5px solid var(--color-green-500)' : '1.5px solid var(--color-border-light)',
-                        background: isChecked ? 'var(--color-green-50)' : '#FFFFFF',
+                        border: isChecked ? '1.5px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                        background: isChecked ? '#FFF7ED' : '#FFFFFF',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -418,7 +617,7 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                           height: '20px',
                           borderRadius: '6px',
                           border: isChecked ? 'none' : '1.5px solid var(--color-border-subtle)',
-                          background: isChecked ? 'var(--color-green-500)' : '#FFFFFF',
+                          background: isChecked ? 'var(--color-orange-600)' : '#FFFFFF',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -426,11 +625,11 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                         }}>
                           {isChecked && <Check size={14} strokeWidth={3} />}
                         </div>
-                        <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-navy-800)' }}>
+                        <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--color-navy-800)' }}>
                           {add.name}
                         </span>
                       </div>
-                      <span style={{ fontSize: '0.84rem', fontWeight: 700, color: 'var(--color-royal-600)' }}>
+                      <span style={{ fontSize: '0.84rem', fontWeight: 700, color: 'var(--color-orange-600)' }}>
                         +₹{add.price}
                       </span>
                     </div>
@@ -490,8 +689,8 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                       style={{
                         padding: '16px 20px',
                         borderRadius: '14px',
-                        border: isSelected ? '2px solid var(--color-cyan-500)' : '1.5px solid var(--color-border-light)',
-                        background: isSelected ? '#F0F9FF' : '#FFFFFF',
+                        border: isSelected ? '2px solid var(--color-orange-600)' : '1.5px solid var(--color-border-light)',
+                        background: isSelected ? '#FFF7ED' : '#FFFFFF',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -499,12 +698,12 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <Clock size={18} color={isSelected ? 'var(--color-cyan-500)' : 'var(--color-text-light)'} />
-                        <span style={{ fontSize: '0.95rem', fontWeight: 700, color: isSelected ? 'var(--color-royal-600)' : 'var(--color-navy-800)' }}>
+                        <Clock size={18} color={isSelected ? 'var(--color-orange-600)' : 'var(--color-text-light)'} />
+                        <span style={{ fontSize: '0.95rem', fontWeight: 700, color: isSelected ? 'var(--color-orange-700)' : 'var(--color-navy-800)' }}>
                           {slot}
                         </span>
                       </div>
-                      {isSelected && <CheckCircle2 size={20} color="var(--color-cyan-500)" />}
+                      {isSelected && <CheckCircle2 size={20} color="var(--color-orange-600)" />}
                     </div>
                   );
                 })}
@@ -575,7 +774,7 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                   <textarea
                     className="form-textarea"
                     rows={2}
-                    placeholder="House/Flat No, Apartment Name, Street, Landmark, Pincode"
+                    placeholder="House/Flat/Villa No, Property/Apartment Name, Street, Landmark, Pincode"
                     value={customerData.address}
                     onChange={(e) => setCustomerData({ ...customerData, address: e.target.value })}
                   />
@@ -587,7 +786,7 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                   <input
                     type="text"
                     className="form-input"
-                    placeholder="e.g. Focus on kitchen chimney & master bathroom scaling"
+                    placeholder="e.g. Focus on bathroom limescale & kitchen chimney grease"
                     value={customerData.specialInstructions}
                     onChange={(e) => setCustomerData({ ...customerData, specialInstructions: e.target.value })}
                   />
@@ -617,9 +816,9 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                   </div>
 
                   <div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--color-text-light)', fontWeight: 600 }}>Property & Size</div>
-                    <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-navy-800)', textTransform: 'capitalize' }}>
-                      {selectedPropertyType.replace('-', ' ')} ({selectedSize.toUpperCase()})
+                    <div style={{ fontSize: '0.78rem', color: 'var(--color-text-light)', fontWeight: 600 }}>Property & Configuration</div>
+                    <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-navy-800)' }}>
+                      {priceEstimate.pricingBreakdownText}
                     </div>
                   </div>
 
@@ -675,20 +874,20 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
                 }}>
                   <div>
                     <div style={{ fontSize: '0.82rem', color: 'var(--color-text-light)' }}>
-                      Estimated Starting Price:
+                      Exact Estimated Price:
                     </div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-                      *Transparent estimate. Finalized upon on-site survey without surprise costs.
+                      *100% transparent pricing based on official rate cards. Pay after satisfaction.
                     </div>
                   </div>
                   <div style={{ textAlign: 'right' }}>
                     {promoApplied && (
                       <div style={{ fontSize: '0.9rem', textDecoration: 'line-through', color: 'var(--color-text-light)' }}>
-                        ₹{priceEstimate.rawTotal}
+                        ₹{priceEstimate.rawTotal.toLocaleString('en-IN')}
                       </div>
                     )}
                     <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-green-600)', lineHeight: 1 }}>
-                      ₹{priceEstimate.finalTotal}
+                      ₹{priceEstimate.finalTotal.toLocaleString('en-IN')}
                     </div>
                   </div>
                 </div>
@@ -706,7 +905,9 @@ export const BookingSystemModal = ({ initialServiceId, onClose, onBookingSuccess
           borderTop: '1px solid var(--color-border-light)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          borderBottomLeftRadius: 'var(--radius-xl)',
+          borderBottomRightRadius: 'var(--radius-xl)'
         }}>
           {step > 1 ? (
             <button

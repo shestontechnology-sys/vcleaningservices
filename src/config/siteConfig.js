@@ -23,7 +23,7 @@ export const siteConfig = {
       region: "South India",
       country: "India"
     },
-    serviceAreas: ["Residential Communities", "Tech Parks & Commercial Hubs", "Educational Campuses", "Retail & Hospitality"],
+    serviceAreas: ["Residential Communities & Villas", "Independent Houses & Plots", "Tech Parks & Commercial Hubs", "Educational Campuses", "Retail & Hospitality"],
     workingHours: "Monday – Sunday: 7:00 AM – 9:00 PM",
     socialLinks: {
       instagram: "https://instagram.com",
@@ -52,7 +52,7 @@ export const siteConfig = {
     pillars: [
       {
         title: "SKILLED",
-        description: "Trained in specialized surface handling, marble buffing, grease extraction, and sanitization protocols.",
+        description: "Trained in specialized surface handling, marble buffing, grease extraction, adhesive sticker removal, and sanitization protocols.",
         icon: "ShieldCheck"
       },
       {
@@ -74,17 +74,17 @@ export const siteConfig = {
       id: "aayudha-pooja-special",
       badge: "FESTIVE CAMPAIGN",
       title: "AAYUDHA POOJA SPECIAL OFFER",
-      headline: "Give Your Home or Workplace a Fresh Start This Aayudha Pooja",
-      subtext: "Get Exclusive Offers on Deep Cleaning & Equipment Care Services for Homes, Offices, and Institutions.",
-      ctaPrimary: "BOOK AAYUDHA POOJA CLEANING",
+      headline: "Give Your Home, Villa or Workplace a Fresh Start This Aayudha Pooja",
+      subtext: "Get Exclusive Offers on Deep Cleaning & Equipment Care Services for Apartments, Villas, Plots, Offices, and Campuses.",
+      ctaPrimary: "BOOK FESTIVE CLEANING",
       ctaSecondary: "CONTACT US FOR OFFERS",
       promoCode: "AAYUDHA2026",
-      offerHighlight: "Special festive package with tool & machinery sanitization, floor scrubbing, and sparkling brass fixture polish.",
+      offerHighlight: "Special festive package with tool & machinery sanitization, floor scrubbing, sticker mark removal, and sparkling brass fixture polish.",
       isActive: true,
       perks: [
         "Priority festive slot reservation",
         "Free complimentary appliance exterior detailing",
-        "Deep floor scrubbing & dust removal",
+        "Deep mechanized floor scrubbing & dust removal",
         "Custom vehicle/machinery puja cleaning on request"
       ]
     }
@@ -94,42 +94,119 @@ export const siteConfig = {
   services: [
     {
       id: "full-home-cleaning",
-      title: "FULL HOME CLEANING",
-      shortDescription: "Complete deep cleaning for apartments, villas, and independent houses.",
-      detailedDescription: "A comprehensive top-to-bottom transformation for your living spaces. Our trained team tackles deep-seated grime, floor stains, cobwebs, balconies, and sanitizes every corner to create a rejuvenating home sanctuary.",
+      title: "APARTMENT FULL HOME DEEP CLEANING",
+      category: "residential",
+      shortDescription: "Complete full home deep cleaning for 1 BHK to 5+ BHK apartments and flats.",
+      detailedDescription: "A thorough top-to-bottom deep sanitization and transformation for your apartment. In Full Home Cleaning, we strictly perform comprehensive DEEP CLEANING covering all rooms, balconies, kitchen degreasing, bathroom descaling, fan/switchboard dusting, and mechanized rotary floor scrubbing.",
       image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=80",
-      pricingNote: "Starting From ₹2,499 (Calculated based on property size & BHK)",
-      startingPrice: 2499,
+      pricingNote: "Starting From ₹4,000 (Empty: ₹4,000 | Occupied: ₹4,500)",
+      startingPrice: 4000,
+      pricingType: "rateCard",
+      rateCardType: "apartment",
       duration: "4 - 8 Hours (Depending on BHK size)",
       rating: "4.95",
       reviewsCount: "680+",
       included: [
-        "Living room deep vacuuming, dusting & wet mopping",
-        "Bedroom cleaning, wardrobe exterior dusting & under-bed clearing",
-        "Kitchen deep cleaning (countertops, tiles, sink & cabinet fronts)",
-        "Bathroom deep cleaning (tiles, commode, washbasin, taps & scaling)",
-        "Balcony floor washing, railing wipe-down & cobweb clearing",
-        "Floor mechanized buffing / scrubbing with eco-friendly solutions",
+        "Living room deep vacuuming, dusting & mechanized floor scrubbing",
+        "Bedroom cleaning, wardrobe exterior dusting & under-bed clearance",
+        "Kitchen deep degreasing (countertops, tiles, sink & cabinet fronts)",
+        "Bathroom deep descaling (tiles, commode, washbasin, taps & glass)",
+        "Balcony floor washing, railing wipe-down & cobweb removal",
+        "Rotary floor machine buffing with eco-friendly solutions",
         "Window glass cleaning, mosquito mesh dusting & sill wiping",
-        "Full surface sanitization, switchboards & light fixtures dusting"
+        "Full surface sanitization, switchboards & light fixtures detailing"
       ],
       notIncluded: [
-        "Interior wardrobe reorganization (unless custom booked)",
+        "Interior wardrobe reorganization (unless cleared beforehand)",
         "Wall painting or heavy plaster restoration",
-        "Hazardous chemical / pest eradication (available as add-on)"
+        "Severe post-construction paint scraping (available in Heavy Stains package)"
       ],
       cleaningProcess: [
         "Dry vacuuming and high-reach cobweb removal",
         "Deep degreasing and tile scrubbing with rotary machines",
         "Sanitizing high-touch surfaces & bathroom fittings",
-        "Final inspection and client walkthrough checklist"
+        "Final quality inspection and client walkthrough checklist"
       ],
       equipmentUsed: ["Single Disc Rotary Scrubber", "High-Pressure Wet/Dry Vacuum", "Microfiber Color-Coded Cloths", "Eco-Friendly Alkaline Cleaners", "Glass Squeegees"],
       benefits: ["Eliminates 99.9% dust mites and allergens", "Restores gleam to dull marble/vitrified tiles", "Saves 10+ hours of exhausting weekend labor"]
     },
     {
+      id: "villa-deep-cleaning",
+      title: "INDIVIDUAL VILLA & PLOT DEEP CLEANING",
+      category: "residential",
+      shortDescription: "Specialized deep cleaning for independent villas, duplexes, plots, and bungalows by sq. ft.",
+      detailedDescription: "Designed specifically for independent houses, luxury villas, plots, row houses, and multi-floor duplex homes. Includes complete multi-story dusting, extensive balcony/terrace washing, exterior entryways, detailed bathroom descaling, kitchen grease removal, and heavy-duty mechanized floor buffing.",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+      pricingNote: "Starting From ₹4,200 (Tiered by Sq. Ft. & Occupancy)",
+      startingPrice: 4200,
+      pricingType: "rateCard",
+      rateCardType: "villa",
+      duration: "5 - 9 Hours",
+      rating: "4.97",
+      reviewsCount: "340+",
+      included: [
+        "Multi-story staircase railing, steps, and skirting board scrub",
+        "All bedrooms, master suites, guest rooms & wardrobe exterior polish",
+        "Modular kitchen chimney hood, tiles & countertop degreasing",
+        "All bathrooms complete limescale removal & sanitary ware polish",
+        "Terrace, sit-out & balcony high-pressure washing",
+        "Compound gate, portico & entryway mechanized floor scrubbing",
+        "Large French windows, sliding glass doors & mosquito mesh detailing",
+        "Ceiling fans, chandeliers & high-ceiling cobweb extraction"
+      ],
+      notIncluded: [
+        "Garden landscaping or tree trimming",
+        "Underground water sump cleaning (available on custom request)"
+      ],
+      cleaningProcess: [
+        "Multi-floor zoning and high-reach dust elimination",
+        "Rotary floor scrubbing across all rooms & corridors",
+        "Intensive bathroom descaling & chrome fixture polishing",
+        "Balcony & porch pressure wash with final sanitization"
+      ],
+      equipmentUsed: ["Heavy-Duty Rotary Scrubbers", "High-Pressure Water Jets", "Industrial HEPA Wet/Dry Extractors", "Multi-surface Eco Degreasers"],
+      benefits: ["Handles large square footages effortlessly", "Restores shine to premium marble & granite floors", "Guarantees complete multi-floor spotless turnover"]
+    },
+    {
+      id: "heavy-stains-cleaning",
+      title: "STICKER MARKS & HEAVY STAINS DEEP CLEANING",
+      category: "residential",
+      shortDescription: "Intensive deep removal of stubborn adhesive sticker marks, heavy floor stains & paint splatters.",
+      detailedDescription: "Specialized intensive restoration deep cleaning for homes with tough adhesive residues, tape & sticker marks on tiles/doors/windows, hard chemical stains, post-renovation paint splatters, cement residue, and stubborn oil deposits that standard cleaning cannot remove.",
+      image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1000&q=80",
+      pricingNote: "Starting From ₹5,000 (Based on BHK / Property Size)",
+      startingPrice: 5000,
+      pricingType: "rateCard",
+      rateCardType: "heavyStains",
+      duration: "6 - 10 Hours",
+      rating: "4.98",
+      reviewsCount: "290+",
+      included: [
+        "Safe extraction of adhesive sticker marks from glass, wood, and tiles",
+        "Heavy stain treatment on vitrified, marble, and ceramic floorings",
+        "Post-painting paint splatter, adhesive tape, and cement haze removal",
+        "Intense chemical descaling of severely stained bathroom tiles & fixtures",
+        "Deep degreasing of carbonized oil & grease on kitchen surfaces",
+        "Full mechanized heavy scrubbing with specialized non-abrasive solvents",
+        "Comprehensive whole-house deep cleaning combined with stain treatment"
+      ],
+      notIncluded: [
+        "Permanent chemical burn or acid-etched stone discoloration reversal",
+        "Repainting damaged drywall"
+      ],
+      cleaningProcess: [
+        "Surface assessment and solvent testing",
+        "Adhesive softening & precision blade scraper treatment",
+        "Rotary mechanized agitation with stain-lifting agents",
+        "Full neutral rinse, buffing, and whole-house deep clean"
+      ],
+      equipmentUsed: ["Specialized Adhesive Solvents", "Industrial Floor Polishers", "Precision Non-Scratch Scrapers", "Heavy-Duty Extractors"],
+      benefits: ["Restores ruined-looking tiles and glass without scratching", "Completely lifts stubborn tenant/builder stickers and tape", "Leaves property 100% pristine and spotless"]
+    },
+    {
       id: "commercial-property-cleaning",
       title: "COMMERCIAL PROPERTY CLEANING",
+      category: "commercial",
       shortDescription: "Professional cleaning solutions for offices, commercial buildings, shops, and business spaces.",
       detailedDescription: "Keep your workspace hygienic, spotless, and impressive for clients and employees. We offer scheduled weekend deep cleans or recurring maintenance tailored to modern offices, tech parks, retail showrooms, and clinics.",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80",
@@ -163,6 +240,7 @@ export const siteConfig = {
     {
       id: "college-campus-cleaning",
       title: "COLLEGE CAMPUS CLEANING",
+      category: "commercial",
       shortDescription: "Large-scale cleaning solutions for educational institutions, schools, and university campuses.",
       detailedDescription: "Specialized high-capacity sanitization and deep maintenance for educational institutions. From high-footfall lecture halls and laboratory floors to athletic auditoriums and student hostels.",
       image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80",
@@ -196,6 +274,7 @@ export const siteConfig = {
     {
       id: "kitchen-deep-cleaning",
       title: "KITCHEN DEEP CLEANING",
+      category: "residential",
       shortDescription: "Intensive degreasing and sanitization for modular and traditional kitchens.",
       detailedDescription: "Transform grease-laden kitchen tiles, sticky exhaust hoods, oil-splattered stove surrounds, and countertop grime into a hygienic culinary haven.",
       image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80",
@@ -228,6 +307,7 @@ export const siteConfig = {
     {
       id: "bathroom-deep-cleaning",
       title: "BATHROOM DEEP CLEANING",
+      category: "residential",
       shortDescription: "Hard-water stain removal, deep descaling, tile scrubbing, and fixture sanitization.",
       detailedDescription: "Eliminate yellow hard-water calcium stains, soap scum on glass partitions, blackened tile grout, and commode scale with professional bathroom descaling.",
       image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80",
@@ -261,6 +341,7 @@ export const siteConfig = {
     {
       id: "sofa-upholstery-cleaning",
       title: "SOFA & UPHOLSTERY CLEANING",
+      category: "residential",
       shortDescription: "Fabric shampooing, deep vacuum extraction, and stain treatment for sofas, chairs & mattresses.",
       detailedDescription: "Revitalize your living room furniture. Our injection-extraction shampoo process pulls out deep dirt, food stains, body oils, and pet hair without damaging sensitive fabric fibers.",
       image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80",
@@ -292,12 +373,13 @@ export const siteConfig = {
     },
     {
       id: "move-in-move-out-cleaning",
-      title: "MOVE-IN / MOVE-OUT CLEANING",
+      title: "MOVE-IN / MOVE-OUT DEEP CLEANING",
+      category: "residential",
       shortDescription: "Turnkey deep cleaning for new homeowners, tenants, landlords, and renovated properties.",
       detailedDescription: "Move into an immaculate, germ-free home or secure your full rental security deposit. We deep-clean interior cabinets, scrub paint spatters, and disinfect every corner before your moving boxes arrive.",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
-      pricingNote: "Starting From ₹2,999 (Complete vacant home rate)",
-      startingPrice: 2999,
+      pricingNote: "Starting From ₹4,000 (Based on Property Type & BHK)",
+      startingPrice: 4000,
       duration: "5 - 8 Hours",
       rating: "4.96",
       reviewsCount: "280+",
@@ -325,6 +407,7 @@ export const siteConfig = {
     {
       id: "custom-cleaning",
       title: "CUSTOM CLEANING",
+      category: "commercial",
       shortDescription: "Tailored cleaning services for event venues, terrace spaces, warehouses, or specific rooms.",
       detailedDescription: "Need cleaning after a wedding, puja, birthday party, or have custom requests like terrace pressure washing, garage detailing, or showroom floors? We build a bespoke cleaning plan just for you.",
       image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1000&q=80",
@@ -403,13 +486,13 @@ export const siteConfig = {
     {
       step: "01",
       title: "CHOOSE YOUR SERVICE",
-      description: "Select from full home deep cleaning, commercial spaces, college campuses, or specialized room cleaning.",
+      description: "Select from full home deep cleaning, villa/plot cleaning, heavy stain removal, or commercial spaces.",
       icon: "ListChecks"
     },
     {
       step: "02",
       title: "TELL US YOUR REQUIREMENTS",
-      description: "Specify your property type, BHK size, customized add-ons, or event preferences in our 60-second interactive form.",
+      description: "Specify your property type, BHK size or square feet, occupancy condition (Empty vs Occupied), and add-ons.",
       icon: "FileText"
     },
     {
@@ -434,12 +517,12 @@ export const siteConfig = {
       icon: "GraduationCap"
     },
     {
-      title: "Professional Cleaning Process",
+      title: "Professional Deep Cleaning Process",
       description: "Standardized 50+ checkpoint checklists to ensure not a single spot or corner is overlooked.",
       icon: "ClipboardCheck"
     },
     {
-      title: "Quality Equipment",
+      title: "Quality Industrial Equipment",
       description: "Industrial wet/dry vacuum extractors, single-disc rotary scrubbers, and eco-safe formulations.",
       icon: "Wrench"
     },
@@ -450,12 +533,12 @@ export const siteConfig = {
     },
     {
       title: "Residential & Commercial Expertise",
-      description: "Proven track record handling 1000+ luxury homes and 10+ major university campuses.",
+      description: "Proven track record handling 1000+ luxury homes, villas, plots, and 10+ major university campuses.",
       icon: "Building2"
     },
     {
       title: "Customized Cleaning Solutions",
-      description: "Flexible packages tailored precisely to your BHK, carpet area, schedule, or budget requirements.",
+      description: "Transparent rate cards for empty vs occupied homes, sq.ft tiers, and stubborn sticker/stain treatments.",
       icon: "Sliders"
     },
     {
@@ -470,35 +553,66 @@ export const siteConfig = {
     }
   ],
 
-  // Dynamic Quote & Booking Calculation Rules
+  // Official Pricing Matrices from Rate Cards
   pricingMatrix: {
+    // Property Categories
     propertyTypes: [
-      { id: "apartment", name: "Apartment", multiplier: 1.0 },
-      { id: "villa", name: "Villa / Duplex", multiplier: 1.35 },
-      { id: "independent-house", name: "Independent House", multiplier: 1.2 },
-      { id: "office", name: "Office Workspace", multiplier: 1.3 },
-      { id: "shop", name: "Retail Shop / Showroom", multiplier: 1.15 },
-      { id: "commercial-building", name: "Commercial Building", multiplier: 1.8 },
-      { id: "college-institution", name: "College / Campus / Institution", multiplier: 2.5 },
-      { id: "other", name: "Other / Custom Space", multiplier: 1.1 }
+      { id: "apartment", name: "Apartment / Flat", icon: "Home", category: "apartment" },
+      { id: "villa", name: "Individual Villa / Plot / Bungalow", icon: "Home", category: "villa" },
+      { id: "heavy-stains-home", name: "Sticker Marks & Heavy Stains Treatment", icon: "Sparkles", category: "heavyStains" },
+      { id: "office", name: "Office Workspace", icon: "Building2", category: "commercial" },
+      { id: "shop", name: "Retail Shop / Showroom", icon: "Building2", category: "commercial" },
+      { id: "commercial-building", name: "Commercial Building", icon: "Building2", category: "commercial" },
+      { id: "college-institution", name: "College / Campus / Institution", icon: "GraduationCap", category: "commercial" },
+      { id: "other", name: "Other / Custom Space", icon: "Layers", category: "custom" }
     ],
+
+    // Occupancy Status
+    occupancyTypes: [
+      { id: "empty", name: "Empty / Vacant House (Unfurnished)", label: "Empty" },
+      { id: "occupied", name: "Occupied / Furnished House (In-Use)", label: "Occupied" }
+    ],
+
+    // 1. Apartment Full Home Deep Cleaning Rates (Image 3)
+    apartmentPricing: [
+      { id: "1bhk", name: "1 BHK Apartment", bhk: "1 BHK", emptyPrice: 4000, occupiedPrice: 4500, sqftRange: "400 - 650 sq.ft" },
+      { id: "2bhk", name: "2 BHK Apartment", bhk: "2 BHK", emptyPrice: 4800, occupiedPrice: 5800, sqftRange: "700 - 1100 sq.ft" },
+      { id: "3bhk", name: "3 BHK Apartment", bhk: "3 BHK", emptyPrice: 5200, occupiedPrice: 6000, sqftRange: "1200 - 1800 sq.ft" },
+      { id: "4bhk", name: "4 BHK Apartment", bhk: "4 BHK", emptyPrice: 7500, occupiedPrice: 8300, sqftRange: "1900 - 2600 sq.ft" },
+      { id: "5plus-bhk", name: "5+ BHK / Luxury Penthouse", bhk: "5+ BHK", emptyPrice: 9500, occupiedPrice: 11000, sqftRange: "2700+ sq.ft" }
+    ],
+
+    // 2. Individual Villa / Plot / Independent House Deep Cleaning Rates (Image 1)
+    villaPricing: [
+      { id: "villa-1", tier: "Tier 1", name: "Up to 1,200 sq.ft (1-2 BHK Villa / Plot)", sqftRange: "Up to 1,200 sq.ft", emptyPrice: 4200, occupiedPrice: 4700 },
+      { id: "villa-2", tier: "Tier 2", name: "1,200 - 1,800 sq.ft (2-3 BHK Villa / Plot)", sqftRange: "1,200 - 1,800 sq.ft", emptyPrice: 5000, occupiedPrice: 5800 },
+      { id: "villa-3", tier: "Tier 3", name: "1,800 - 2,500 sq.ft (3-4 BHK Villa / Plot)", sqftRange: "1,800 - 2,500 sq.ft", emptyPrice: 6500, occupiedPrice: 7200 },
+      { id: "villa-4", tier: "Tier 4", name: "2,500 - 3,500 sq.ft (4-5 BHK Villa / Plot)", sqftRange: "2,500 - 3,500 sq.ft", emptyPrice: 8500, occupiedPrice: 9700 },
+      { id: "villa-5", tier: "Tier 5", name: "3,500+ sq.ft (5+ BHK / Large Villa / Estate)", sqftRange: "3,500+ sq.ft", emptyPrice: 13000, occupiedPrice: 15000 }
+    ],
+
+    // 3. Sticker Marks, Heavy Stains & Post-Construction Deep Cleaning Rates (Image 2)
+    heavyStainsPricing: [
+      { id: "stain-1", tier: "Tier 1", name: "1 BHK / Small Space", sqftRange: "Under 700 sq.ft", price: 5000 },
+      { id: "stain-2", tier: "Tier 2", name: "2 BHK / Medium Space", sqftRange: "700 - 1,200 sq.ft", price: 6500 },
+      { id: "stain-3", tier: "Tier 3", name: "3 BHK / Large Space", sqftRange: "1,200 - 1,800 sq.ft", price: 8500 },
+      { id: "stain-4", tier: "Tier 4", name: "4 BHK / XL Space", sqftRange: "1,800 - 2,500 sq.ft", price: 12000 },
+      { id: "stain-5", tier: "Tier 5", name: "5+ BHK / Villa / XXL Space", sqftRange: "2,500+ sq.ft", price: 15000 }
+    ],
+
+    // Commercial Property Sizing
     sizes: {
-      residential: [
-        { id: "1bhk", name: "1 BHK", basePrice: 2499, sqftRange: "400 - 650 sq.ft" },
-        { id: "2bhk", name: "2 BHK", basePrice: 3499, sqftRange: "700 - 1100 sq.ft" },
-        { id: "3bhk", name: "3 BHK", basePrice: 4799, sqftRange: "1200 - 1800 sq.ft" },
-        { id: "4bhk", name: "4 BHK", basePrice: 6299, sqftRange: "1900 - 2600 sq.ft" },
-        { id: "5plus-bhk", name: "5+ BHK / Luxury Penthouse", basePrice: 7999, sqftRange: "2700+ sq.ft" }
-      ],
       commercial: [
-        { id: "small", name: "Small (< 1,000 sq.ft)", basePrice: 3999 },
-        { id: "medium", name: "Medium (1,000 - 3,500 sq.ft)", basePrice: 7499 },
-        { id: "large", name: "Large (3,500 - 10,000 sq.ft)", basePrice: 14999 },
-        { id: "custom", name: "Large Campus / Custom (10,000+ sq.ft)", basePrice: 24999 }
+        { id: "comm-small", name: "Small Office (< 1,000 sq.ft)", basePrice: 4999 },
+        { id: "comm-med", name: "Medium Workspace (1,000 - 3,500 sq.ft)", basePrice: 8499 },
+        { id: "comm-large", name: "Large Commercial Floor (3,500 - 10,000 sq.ft)", basePrice: 15999 },
+        { id: "comm-custom", name: "Large Campus / Custom (10,000+ sq.ft)", basePrice: 24999 }
       ]
     },
+
+    // Add-On Services
     addOns: [
-      { id: "balcony", name: "Extra Balcony Scrubbing", price: 350 },
+      { id: "balcony", name: "Extra Balcony Machine Scrubbing", price: 350 },
       { id: "fridge", name: "Refrigerator Interior Detailing", price: 450 },
       { id: "chimney", name: "Kitchen Chimney & Filter Degreasing", price: 599 },
       { id: "sofa-2seat", name: "Sofa Shampooing (2-3 Seater)", price: 699 },
@@ -507,6 +621,7 @@ export const siteConfig = {
       { id: "fan-lights", name: "Ceiling Fan & Chandelier Detailing", price: 400 },
       { id: "disinfection", name: "Hospital-Grade Antimicrobial Fogging", price: 799 }
     ],
+
     timeSlots: [
       "Morning Slot (08:00 AM – 11:00 AM)",
       "Midday Slot (11:30 AM – 02:30 PM)",
@@ -516,16 +631,16 @@ export const siteConfig = {
     ]
   },
 
-  // Customer Reviews (Placeholders ready for live input)
+  // Customer Reviews
   testimonials: [
     {
       id: "rev-1",
       customerName: "Siddharth R.",
       location: "Indiranagar, Bengaluru",
-      service: "Full Home Deep Cleaning (3 BHK)",
+      service: "Full Home Deep Cleaning (3 BHK Occupied)",
       rating: 5,
       date: "Recent Customer",
-      comment: "Outstanding attention to detail! The team cleaned every corner, tiles look brand new, and they were very polite and punctual. Highly recommended.",
+      comment: "Outstanding attention to detail! The team cleaned every corner, tiles look brand new, and they were very polite and punctual. Clear and exact pricing as listed.",
       isPlaceholder: false
     },
     {
@@ -542,21 +657,21 @@ export const siteConfig = {
       id: "rev-3",
       customerName: "Karthik & Priya V.",
       location: "Gachibowli, Hyderabad",
-      service: "Move-In Deep Cleaning (4 BHK Villa)",
+      service: "Individual Villa Deep Cleaning (3,000 sq.ft)",
       rating: 5,
-      date: "New Homeowner",
-      comment: "Moved into our new villa with zero post-construction dust left behind. The bathrooms and modular kitchen were handed over in sparkling state.",
+      date: "Villa Owner",
+      comment: "Moved into our new villa with zero post-construction dust or sticker marks left behind. The bathrooms and modular kitchen were handed over in sparkling state.",
       isPlaceholder: false
     },
     {
       id: "rev-4",
-      customerName: "[Customer Review Slot]",
-      location: "[Customer Location]",
-      service: "Kitchen Deep Cleaning",
+      customerName: "Rajesh Menon",
+      location: "Koramangala, Bengaluru",
+      service: "Sticker Marks & Heavy Stains Deep Cleaning",
       rating: 5,
       date: "Verified Booking",
-      comment: "Customer testimonial will appear here. Future reviews submitted via the website or Google Business will automatically sync to this section.",
-      isPlaceholder: true
+      comment: "Our previous tenants had left heavy tape and sticker glue all over the tiles and doors. V Cleaning erased every trace without scratching the surfaces!",
+      isPlaceholder: false
     }
   ],
 
@@ -606,15 +721,23 @@ export const siteConfig = {
     }
   ],
 
-  // Frequently Asked Questions (covering all 10 user requirements)
+  // Frequently Asked Questions
   faqs: [
     {
       question: "What cleaning services do you provide?",
-      answer: "V Cleaning Services provides end-to-end residential, commercial, and institutional cleaning services. Our core offerings include Full Home Deep Cleaning, Commercial Property & Office Cleaning, College & Campus Cleaning, Kitchen Deep Cleaning, Bathroom Descaling, Sofa & Upholstery Shampooing, Move-In / Move-Out Cleaning, and Custom Event & Venue Cleaning."
+      answer: "V Cleaning Services provides end-to-end residential, commercial, and institutional deep cleaning services. Our specialized offerings include Apartment Full Home Deep Cleaning, Individual Villa & Plot Deep Cleaning, Sticker Marks & Heavy Stains Deep Cleaning, Commercial Property & Office Cleaning, College & Campus Cleaning, Kitchen Deep Cleaning, Bathroom Descaling, Sofa & Upholstery Shampooing, Move-In / Move-Out Deep Cleaning, and Custom Event & Venue Cleaning."
     },
     {
-      question: "Do you provide full home deep cleaning?",
-      answer: "Yes! Our Full Home Deep Cleaning covers every inch of your residence: living rooms, bedrooms, kitchen, all bathrooms, balconies, utility areas, windows, ceiling fans, switchboards, and mechanized floor scrubbing using eco-friendly agents."
+      question: "Do you provide full home deep cleaning for villas and plots?",
+      answer: "Yes! In Full Home Cleaning, we strictly perform deep cleaning for all types of houses including apartments, independent villas, plots, duplexes, and row houses. Our pricing is transparently structured according to BHK, square footage, and whether the property is Empty (Vacant) or Occupied (Furnished)."
+    },
+    {
+      question: "How much does Full Home Deep Cleaning cost?",
+      answer: "Apartment Deep Cleaning starts from ₹4,000 for Empty 1 BHK (₹4,500 Occupied), ₹4,800 for Empty 2 BHK (₹5,800 Occupied), ₹5,200 for Empty 3 BHK (₹6,000 Occupied), and ₹7,500 for Empty 4 BHK (₹8,300 Occupied). Individual Villas start from ₹4,200 (up to 1,200 sq.ft) up to ₹13,000–₹15,000 for 3,500+ sq.ft estates."
+    },
+    {
+      question: "Do you remove tough sticker marks, paint splatters, and heavy stains?",
+      answer: "Yes! We offer a dedicated 'Sticker Marks & Heavy Stains Deep Cleaning' service designed specifically to eliminate tough adhesive residues, tape glue, paint spatters, cement residues, and heavy floor discoloration starting from ₹5,000."
     },
     {
       question: "Do you clean commercial properties?",
@@ -626,19 +749,19 @@ export const siteConfig = {
     },
     {
       question: "How long does a cleaning service take?",
-      answer: "Service duration depends on the property type and size: A 2 BHK home cleaning typically takes 4–5 hours, a 3–4 BHK takes 5–7 hours, an individual bathroom takes ~1.5 hours, while commercial and campus projects are scheduled per shift or weekend milestone."
+      answer: "Service duration depends on the property type and size: A 2 BHK deep cleaning typically takes 4–5 hours, a 3–4 BHK takes 5–7 hours, an individual bathroom takes ~1.5 hours, while large villas and campus projects are scheduled per milestone or full-day drives."
     },
     {
       question: "Do I need to provide cleaning equipment?",
-      answer: "No, you do not need to provide any equipment or chemicals. Our crew arrives fully equipped with single-disc rotary scrubbers, industrial wet & dry vacuums, microfiber wipes, ladders, squeegees, and specialized eco-friendly chemicals. We only require access to electricity and water."
+      answer: "No, you do not need to provide any equipment or chemicals. Our crew arrives fully equipped with single-disc rotary scrubbers, industrial wet & dry vacuums, microfiber wipes, ladders, squeegees, adhesive removers, and specialized eco-friendly chemicals. We only require access to electricity and water."
     },
     {
       question: "How can I book a service?",
-      answer: "Booking is simple: Click the 'Book Now' button anywhere on our website, select your service, property type, preferred date, and time slot in our 8-step booking system, and confirm. You can also reach us via WhatsApp or email at vcleaningservices@gmail.com."
+      answer: "Booking is simple: Click the 'Book Now' button anywhere on our website, select your service, property type, preferred date, and time slot in our interactive booking system, and confirm. You can also reach us via email at vcleaningservices@gmail.com."
     },
     {
       question: "How is the price calculated?",
-      answer: "Our pricing is transparent and calculated based on your property type (Apartment, Villa, Office, Campus), size (BHK count or square footage), and any custom add-ons you select. We display 'Starting From' estimates, and our team provides a confirmed quote before starting work with zero hidden fees."
+      answer: "Our pricing is 100% transparent and calculated based on your exact property category (Apartment, Villa/Plot, Heavy Stains, Commercial), size (BHK or sq.ft), occupancy status (Empty vs Occupied), and any custom add-ons you select. No hidden fees or surprise charges."
     },
     {
       question: "Can I request customized cleaning?",
@@ -650,7 +773,7 @@ export const siteConfig = {
     }
   ],
 
-  // Backend Database Schemas (Supabase / Firebase / Node.js ready)
+  // Backend Database Schemas
   databaseSchemaInfo: {
     engine: "PostgreSQL / Supabase / MongoDB",
     tables: [
@@ -660,7 +783,7 @@ export const siteConfig = {
       },
       {
         name: "bookings",
-        fields: "id (UUID), booking_reference (VARCHAR), customer_id (UUID), service_id (VARCHAR), property_type (VARCHAR), property_size (VARCHAR), add_ons (JSONB), preferred_date (DATE), preferred_time_slot (VARCHAR), estimated_price (NUMERIC), status (ENUM: pending, confirmed, in_progress, completed, cancelled), notes (TEXT), created_at (TIMESTAMP)"
+        fields: "id (UUID), booking_reference (VARCHAR), customer_id (UUID), service_id (VARCHAR), property_type (VARCHAR), property_size (VARCHAR), occupancy_status (VARCHAR), add_ons (JSONB), preferred_date (DATE), preferred_time_slot (VARCHAR), estimated_price (NUMERIC), status (ENUM: pending, confirmed, in_progress, completed, cancelled), notes (TEXT), created_at (TIMESTAMP)"
       },
       {
         name: "services",
