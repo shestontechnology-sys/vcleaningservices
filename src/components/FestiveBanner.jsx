@@ -1,6 +1,6 @@
 import React from 'react';
 import { siteConfig } from '../config/siteConfig';
-import { Sparkles, Tag, ArrowRight, PhoneCall, Gift, Check, Flame } from 'lucide-react';
+import { Sparkles, Tag, ArrowRight, PhoneCall, Gift, Check, TreePine } from 'lucide-react';
 
 export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) => {
   const campaign = siteConfig.campaigns.aayudhaPooja;
@@ -9,24 +9,24 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
     <section id="festive-offer" style={{
       position: 'relative',
       padding: '48px 0',
-      background: 'linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 45%, #FDE68A 100%)',
-      borderTop: '2px solid #FCD34D',
-      borderBottom: '2px solid #FCD34D',
+      background: 'linear-gradient(135deg, #FEF2F2 0%, #DCFCE7 45%, #F0FDF4 100%)',
+      borderTop: '2px solid #DC2626',
+      borderBottom: '2px solid #16A34A',
       overflow: 'hidden',
       boxShadow: 'var(--shadow-festive)'
     }}>
-      {/* Decorative Traditional Indian Marigold Garland Pattern Border SVG */}
+      {/* Decorative Christmas Red & Green Pattern Border */}
       <div style={{
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
         height: '8px',
-        background: 'repeating-linear-gradient(90deg, #F59E0B, #F59E0B 16px, #D97706 16px, #D97706 32px, #10B981 32px, #10B981 40px)',
+        background: 'repeating-linear-gradient(90deg, #DC2626, #DC2626 16px, #16A34A 16px, #16A34A 32px, #FBBF24 32px, #FBBF24 40px)',
         opacity: 0.9
       }} />
 
-      {/* Decorative Diya / Sparkle Background Glows */}
+      {/* Decorative Snowflake / Star Background Glows */}
       <div style={{
         position: 'absolute',
         top: '-40px',
@@ -34,7 +34,7 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
         width: '280px',
         height: '280px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(254, 243, 199, 0) 70%)',
+        background: 'radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, rgba(254, 242, 242, 0) 70%)',
         pointerEvents: 'none'
       }} />
 
@@ -44,12 +44,12 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
           gridTemplateColumns: '1fr',
           gap: '32px',
           alignItems: 'center',
-          background: 'rgba(255, 255, 255, 0.82)',
+          background: 'rgba(255, 255, 255, 0.88)',
           backdropFilter: 'blur(10px)',
           borderRadius: '24px',
           padding: '36px 32px',
-          border: '1.5px solid #FCD34D',
-          boxShadow: '0 12px 32px rgba(217, 119, 6, 0.12)'
+          border: '1.5px solid #DC2626',
+          boxShadow: '0 12px 32px rgba(220, 38, 38, 0.10)'
         }} className="festive-card-grid">
 
           {/* Left Column: Festive Badge + Headline + Text */}
@@ -57,14 +57,14 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
               <span className="section-badge festive" style={{ margin: 0, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Flame size={14} color="#D97706" />
+                <TreePine size={14} color="#16A34A" />
                 {campaign.badge}
               </span>
               <span style={{
                 fontSize: '0.82rem',
                 fontWeight: 700,
-                color: '#92400E',
-                background: '#FDE68A',
+                color: '#991B1B',
+                background: '#FECACA',
                 padding: '4px 12px',
                 borderRadius: 'var(--radius-full)'
               }}>
@@ -75,19 +75,19 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
             <h2 style={{
               fontSize: 'clamp(1.8rem, 3.2vw, 2.5rem)',
               fontWeight: 800,
-              color: '#78350F',
+              color: '#991B1B',
               letterSpacing: '-0.02em',
               lineHeight: 1.2
             }}>
-              AAYUDHA POOJA <span className="text-gradient-festive">SPECIAL OFFER</span>
+              CHRISTMAS & NEW YEAR <span className="text-gradient-festive">SPECIAL OFFER</span>
             </h2>
 
-            <div style={{ fontSize: '1.18rem', fontWeight: 700, color: '#92400E' }}>
+            <div style={{ fontSize: '1.18rem', fontWeight: 700, color: '#166534' }}>
               "{campaign.headline}"
             </div>
 
-            <p style={{ fontSize: '1.02rem', color: '#78350F', lineHeight: 1.5, maxWidth: '620px' }}>
-              Get Exclusive Offers on Deep Cleaning, Machinery Care & Surface Polishing for homes, vehicles, offices, and institutions before the auspicious festival.
+            <p style={{ fontSize: '1.02rem', color: '#1F2937', lineHeight: 1.5, maxWidth: '620px' }}>
+              Get Exclusive Offers on Deep Cleaning, Home Makeover & Surface Polishing for homes, vehicles, offices, and institutions before Christmas & to welcome the New Year.
             </p>
 
             {/* Festive Highlights Checklist */}
@@ -98,12 +98,12 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
               marginTop: '6px'
             }}>
               {campaign.perks.map((perk, index) => (
-                <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#78350F', fontWeight: 600 }}>
+                <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#1F2937', fontWeight: 600 }}>
                   <div style={{
                     width: '20px',
                     height: '20px',
                     borderRadius: '50%',
-                    background: '#F59E0B',
+                    background: '#16A34A',
                     color: '#FFFFFF',
                     display: 'flex',
                     alignItems: 'center',
@@ -126,24 +126,24 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
             gap: '16px',
             alignItems: 'stretch',
             justifyContent: 'center',
-            background: 'linear-gradient(135deg, #78350F 0%, #92400E 60%, #B45309 100%)',
+            background: 'linear-gradient(135deg, #991B1B 0%, #DC2626 60%, #B91C1C 100%)',
             padding: '28px 24px',
             borderRadius: '20px',
             color: '#FFFFFF',
-            boxShadow: '0 10px 25px rgba(120, 53, 15, 0.3)',
+            boxShadow: '0 10px 25px rgba(153, 27, 27, 0.3)',
             textAlign: 'center'
           }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#FDE68A', fontWeight: 700, fontSize: '0.95rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#BBF7D0', fontWeight: 700, fontSize: '0.95rem' }}>
               <Gift size={20} />
-              <span>Limited Festive Slots</span>
+              <span>Limited Holiday Slots</span>
             </div>
 
             <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.25 }}>
-              Clean Spaces. Blessed Celebrations.
+              Clean Spaces. Happy Celebrations.
             </div>
 
-            <p style={{ fontSize: '0.88rem', color: '#FEF3C7', lineHeight: 1.4 }}>
-              Book your pre-pooja deep cleaning slot in advance to guarantee your preferred timing.
+            <p style={{ fontSize: '0.88rem', color: '#FECACA', lineHeight: 1.4 }}>
+              Book your pre-holiday deep cleaning slot in advance to guarantee your preferred timing.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
@@ -151,8 +151,8 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
                 onClick={() => onOpenBooking('full-home-cleaning')}
                 className="btn btn-festive"
                 style={{
-                  background: '#F59E0B',
-                  color: '#78350F',
+                  background: '#16A34A',
+                  color: '#FFFFFF',
                   fontWeight: 800,
                   fontSize: '1rem',
                   padding: '14px 22px',
@@ -192,7 +192,7 @@ export const FestiveBanner = ({ onOpenBooking, onOpenContact, onOpenOffers }) =>
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#FDE68A',
+                color: '#BBF7D0',
                 fontSize: '0.85rem',
                 textDecoration: 'underline',
                 cursor: 'pointer',

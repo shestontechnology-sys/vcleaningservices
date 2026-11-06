@@ -12,7 +12,7 @@ export const siteConfig = {
     shortName: "V Cleaning",
     tagline: "Cleaner Spaces | Healthier Lives",
     secondaryTagline: "Professional Cleaning for a Brighter Tomorrow",
-    email: "vcleaningservices@gmail.com",
+    email: "thevcleaningservices@gmail.com",
     phone: null, // Phone number hidden as of now
     phoneDisplay: null,
     whatsappNumber: null, // Disabled until business number is provided
@@ -68,24 +68,24 @@ export const siteConfig = {
     ]
   },
 
-  // Seasonal High-Impact Campaign (Aayudha Pooja)
+  // Seasonal High-Impact Campaign (Christmas & New Year)
   campaigns: {
     aayudhaPooja: {
-      id: "aayudha-pooja-special",
-      badge: "FESTIVE CAMPAIGN",
-      title: "AAYUDHA POOJA SPECIAL OFFER",
-      headline: "Give Your Home, Villa or Workplace a Fresh Start This Aayudha Pooja",
-      subtext: "Get Exclusive Offers on Deep Cleaning & Equipment Care Services for Apartments, Villas, Plots, Offices, and Campuses.",
-      ctaPrimary: "BOOK FESTIVE CLEANING",
+      id: "christmas-newyear-special",
+      badge: "HOLIDAY CAMPAIGN",
+      title: "CHRISTMAS & NEW YEAR SPECIAL OFFER",
+      headline: "Give Your Home, Villa or Workplace a Fresh Start This Christmas & New Year",
+      subtext: "Get Exclusive Offers on Deep Cleaning & Holiday Prep Services for Apartments, Villas, Plots, Offices, and Campuses.",
+      ctaPrimary: "BOOK HOLIDAY CLEANING",
       ctaSecondary: "CONTACT US FOR OFFERS",
-      promoCode: "AAYUDHA2026",
-      offerHighlight: "Special festive package with tool & machinery sanitization, floor scrubbing, sticker mark removal, and sparkling brass fixture polish.",
+      promoCode: "XMAS2026",
+      offerHighlight: "Special holiday package with full home deep cleaning, floor scrubbing, sticker mark removal, and sparkling fixture polish to welcome the New Year.",
       isActive: true,
       perks: [
-        "Priority festive slot reservation",
+        "Priority holiday slot reservation",
         "Free complimentary appliance exterior detailing",
         "Deep mechanized floor scrubbing & dust removal",
-        "Custom vehicle/machinery puja cleaning on request"
+        "Post-party & pre-celebration cleanup service"
       ]
     }
   },
@@ -769,7 +769,7 @@ export const siteConfig = {
     },
     {
       question: "Do you provide cleaning before/after functions or special events?",
-      answer: "Yes! We specialize in pre-event preparation and post-event cleanup for weddings, housewarmings, Aayudha Pooja & festive occasions, corporate conferences, and college fests."
+      answer: "Yes! We specialize in pre-event preparation and post-event cleanup for weddings, housewarmings, Christmas & New Year celebrations, corporate conferences, and college fests."
     }
   ],
 
